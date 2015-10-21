@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Codechef</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <script>
+    function go_get_it() {
+        var c = document.getElementById('userhandle');
+        var user = c.value.toLowerCase();
+
+        // username check
+        if (/^[a-z]\{1\}[a-z0-9_]\{3,13\}$/.test(user)) {
+            alert('Input is not alphanumeric');
+            return false;
+        }
+        console.log(user);
+        // window.location.href = '/get/'+userhandle;
+
+    }
+
+    function clear() {
+        console.log("sdfs");
+        var c = document.getElementById('userhandle').value = "";
+    }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="" style="max-width:700px;margin-top:200px;">
+            <div class="form-horizontal">
+                <!-- <fieldset> -->
+                <!-- Form Name -->
+                <legend>Code Chef User Analysis tool</legend>
+                <!-- Text input-->
+                <div class="form-group">
+                    <label class="col-md-4 control-label" for="textinput">User Handle</label>
+                    <div class="col-md-4">
+                        <input id="userhandle" type="text" placeholder="" value="" class="form-control input-md">
+                    </div>
+                </div>
+                <!-- Button (Double) -->
+                <div class="form-group">
+                    <!-- <label class="col-md-4 control-label" for="button1id">Double Button</label> -->
+                    <div class="col-md-offset-4 col-md-8">
+                        <button id="searchbtn" class="btn btn-success" onclick="go_get_it();">Search</button>
+                        <button id="claerbtn" class="btn btn-danger" onclick="clear()">Clear</button>
+                    </div>
+                </div>
+                <!-- </fieldset> -->
+                <!-- </form>	 -->
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
