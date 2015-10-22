@@ -7,6 +7,12 @@ _basedir = os.path.abspath(os.path.dirname(__file__))
 print datetime.datetime.now()
 
 
+h_ago = re.compile('(\d) hours ago') 
+pm = re.compile('(\d\d):(\d\d) (AM|PM) (\d{2})\/(\d{2})\/(\d{2})')
+min_ago = re.compile('\d\d min ago') 
+yesterday_wali  = re.compile('(\d\d:\d\d) (PM) (yesterday)|(\d\d:\d\d) (AM) (yesterday)')
+
+
 username = 'alafazam'
 print 'looking for ' + username
 url = 'https://www.codechef.com/recent/user/page=1&user_handle='+str(username)
@@ -16,6 +22,8 @@ print 'max pages are ' + str(number_of_pages)
 
 time_data = []
 obj_data = []
+data_hours = []
+data_mins = []
 
 for x in range(0,number_of_pages):
 	time.sleep(0.5)
@@ -33,8 +41,21 @@ for x in range(0,number_of_pages):
 		lang = str(q.contents[3].text)
 		obj = {'time':times,'problem_code':problem_code,'status':status,'lang':lang}
 		obj_data.append(obj)
-		# print times
+
 		time_data.append(times)
+
+		hours_search = re.search(pm,times)
+		if hours_search:
+			hours = hours_search.group(1)
+			mins = hours_search.group(2)
+			if hours_search.group(3)=='AM':
+				data_hours.append(int(hours))
+			else:
+				data_hours.append(int(hours)+12)
+
+			data_mins.append(int(mins))
+
+
 		# string_to_match  = str(trs[q].text)
 		# if h_ago.match(string_to_match) or am.match(string_to_match) or pm.match(string_to_match) or time_arr.append(string_to_match):
 		# 	time_arr.append(string_to_match)					
@@ -43,6 +64,14 @@ for x in range(0,number_of_pages):
 		# all_text.append(str(trs[q].text))
 	print "page "+str(x)+" done"
 
-w = open('output.json','w')
-w.write(json.dumps(obj_data))
+# w = open('output.json','w')
+# w.write(json.dumps(hours_mins))
+# w.close()
+
+w = open('hours.json','w')
+w.write(json.dumps(data_hours))
+w.close()
+
+w = open('mins.json','w')
+w.write(json.dumps(data_mins))
 w.close()
