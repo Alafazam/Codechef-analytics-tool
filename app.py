@@ -6,10 +6,11 @@ import time
 import re
 _basedir = os.path.abspath(os.path.dirname(__file__))
 
-h_ago = re.compile('\d hours ago') 
-am = re.compile('\d\d:\d\d AM \d\d/\d\d/\d\d')
-pm = re.compile('\d\d:\d\d PM \d\d/\d\d/\d\d')
+h_ago = re.compile('(\d) hours ago') 
+pm = re.compile('(\d\d):(\d\d) (AM|PM) (\d{2})\/(\d{2})\/(\d{2})')
 min_ago = re.compile('\d\d min ago') 
+yesterday_wali  = re.compile('(\d\d:\d\d) (PM) (yesterday)|(\d\d:\d\d) (AM) (yesterday)')
+
 
 print datetime.datetime.now()
 
@@ -30,55 +31,45 @@ def get_data(username):
 	print 'looking for ' + username
 	url = 'https://www.codechef.com/recent/user/page=1&user_handle='+str(username)
 	r = requests.get(url).json()
-	time_h = []
-	all_trs = []
-	all_text = []
-
-	time_arr = []
-	problem_arr=[]
-	langu_arr=[]
-
-# 
-# 
-# 
-
 	number_of_pages = r["max_page"]
-	print 'max pages are '+ str(number_of_pages)
-	if number_of_pages>1:
-		for x in range(0,number_of_pages):
-				time.sleep(0.5)
-				print "sending rewuest for page = "+ str(x) 
-				url = 'https://www.codechef.com/recent/user?page='+str(x)+'&user_handle='+str(username)
-				r = requests.get(url).json()
-				e = r["content"]
-				soup = BeautifulSoup(e, 'html.parser')
-				trs = soup.find_all('td')
-				length = len(trs)
-				for q in range(0,length):
-					string_to_match  = str(trs[q].text)
-					if h_ago.match(string_to_match) or am.match(string_to_match) or pm.match(string_to_match) or time_arr.append(string_to_match):
-						time_arr.append(string_to_match)					
-						problem_arr.append(str(trs[q+1].text))
-						langu_arr.append(str(trs[q+2].text))
-					all_text.append(str(trs[q].text))
 
-				print "page "+str(x)+" done"
+	print 'max pages are ' + str(number_of_pages)
 
-	# w = open('output.html','w')
-	# w.write(str(all_trs))
+	time_data = []
+	obj_data = []
+
+	for x in range(0,number_of_pages):
+		time.sleep(0.5)
+		print "sending request for page "+ str(x) 
+		url = 'https://www.codechef.com/recent/user?page='+str(x)+'&user_handle='+str(username)
+		r = requests.get(url).json()
+		e = r["content"]
+		soup = BeautifulSoup(e, 'html.parser')
+		trs = soup.find_all('tr','kol')
+		
+		for q in trs:
+			times = str(q.contents[0].text)
+			problem_code = str(q.contents[1].a['href']).split('/')[-1]
+			status = str(q.contents[2].span['title'])
+			lang = str(q.contents[3].text)
+			obj = {'time':times,'problem_code':problem_code,'status':status,'lang':lang}
+			obj_data.append(obj)
+			# print times
+			time_data.append(times)
+			# string_to_match  = str(trs[q].text)
+			# if h_ago.match(string_to_match) or am.match(string_to_match) or pm.match(string_to_match) or time_arr.append(string_to_match):
+			# 	time_arr.append(string_to_match)					
+			# 	problem_arr.append(str(trs[q+1].text))
+			# 	langu_arr.append(str(trs[q+2].text))
+			# all_text.append(str(trs[q].text))
+		print "page "+str(x)+" done"
+
+	# w = open('output.json','w')
+	# w.write(json.dumps(obj_data))
 	# w.close()
-	# print all_trs
-	# print  all_text
-		# soup = BeautifulSoup(e, 'html.parser')
-	# print len(time_arr)
-	myset = set(problem_arr)
-	# print len(myset)
+
 	
-	mylangs = set(langu_arr)
-	print len(mylangs)
-	
-	
-	return render_template('result.html',data=myset)
+	return render_template('result.html',data=json.dumps(obj_data))
 
 
 if __name__ == '__main__':
