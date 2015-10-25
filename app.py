@@ -11,7 +11,7 @@ h_ago = re.compile('(\d) hours ago')
 pm = re.compile('(\d\d):(\d\d) (AM|PM) (\d{2})\/(\d{2})\/(\d{2})')
 min_ago = re.compile('\d\d min ago') 
 yesterday_wali  = re.compile('(\d\d:\d\d) (PM|AM) (yesterday)')
-
+username_reg = re.compile('^[a-z]{1}[a-z0-9_]{3,13}$')
 
 print datetime.datetime.now()
 
@@ -34,8 +34,11 @@ def index():
 
 
 @app.route('/get/<string:username>', methods=['GET'])
-# @login_required
 def get_data(username):
+	# /^[a-z]{1}[a-z0-9_]{3,13}$/
+	if re.match('^[a-z]{1}[a-z0-9_]{3,13}$',username)==None:
+		return "Invalid username"
+
 	print 'looking for ' + username
 	url = 'https://www.codechef.com/recent/user/page=1&user_handle='+str(username)
 	r = requests.get(url).json()

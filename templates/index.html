@@ -9,9 +9,8 @@
     function go_get_it() {
         var c = document.getElementById('userhandle');
         var user = c.value.toLowerCase();
-
         // username check
-        if (/^[a-z]\{1\}[a-z0-9_]\{3,13\}$/.test(user)) {
+        if (!/^[a-z]{1}[a-z0-9_]{3,13}$/.test(user)) {
             alert('Input is not alphanumeric');
             return false;
         }
