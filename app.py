@@ -38,11 +38,15 @@ def get_data(username):
 	# /^[a-z]{1}[a-z0-9_]{3,13}$/
 	if re.match('^[a-z]{1}[a-z0-9_]{3,13}$',username)==None:
 		return "Invalid username"
+	s = requests.Session()
 
 	print 'looking for ' + username
 	url = 'https://www.codechef.com/recent/user/page=1&user_handle='+str(username)
-	r = requests.get(url).json()
+	r = s.get(url).json()
 	number_of_pages = r["max_page"]
+
+	if number_of_pages==0:
+		return 'This user does not exist'
 
 	print 'max pages are ' + str(number_of_pages)
 
@@ -57,7 +61,7 @@ def get_data(username):
 				time.sleep(0.5)
 				print "sending request for page "+ str(x) 
 				url = 'https://www.codechef.com/recent/user?page='+str(x)+'&user_handle='+str(username)
-				r = requests.get(url).json()
+				r = s.get(url).json()
 				e = r["content"]
 				soup = BeautifulSoup(e, 'html.parser')
 				trs = soup.find_all('tr','kol')
@@ -87,6 +91,7 @@ def get_data(username):
 			yield ','+str(pagez)+ '\n'
 		else:
 			yield 'total '+str(pagez)+ 'out of '+str(number_of_pages-1)+' \n'
+			
 	return Response(generate(number_of_pages), mimetype='text/json')
 	# return render_template('result.html',data=json.dumps(obj_data),pagez=pagez)
 
