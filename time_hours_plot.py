@@ -14,9 +14,9 @@ _basedir = os.path.abspath(os.path.dirname(__file__))
 print datetime.datetime.now()
 
 
-h_ago = re.compile('(\d) hours ago') 
+h_ago = re.compile('(\d) (hours) (ago)') 
 pm = re.compile('(\d\d):(\d\d) (AM|PM) (\d{2})\/(\d{2})\/(\d{2})')
-min_ago = re.compile('\d\d min ago') 
+min_ago = re.compile('\d\d (min) (ago)') 
 yesterday_wali  = re.compile('(\d\d:\d\d) (PM) (yesterday)|(\d\d:\d\d) (AM) (yesterday)')
 
 
