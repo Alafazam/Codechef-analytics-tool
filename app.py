@@ -83,7 +83,7 @@ def get_data(username):
 			pagez ='request fetched upto '+str(pagez)+' page'
 			yield ','+str(pagez)+ '\n'
 	
-	return Response(generate(number_of_pages), mimetype='text/json')
+	return Response(generate(number_of_pages), mimetype='text/csv')
 	# return render_template('result.html',data=json.dumps(obj_data),pagez=pagez)
 
 if __name__ == "__main__":
