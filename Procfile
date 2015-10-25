@@ -1,1 +1,1 @@
-web: pip install requests 
+web: python app.py
