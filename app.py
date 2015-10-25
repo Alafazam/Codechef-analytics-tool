@@ -2,14 +2,14 @@ from flask import Flask,session, request, flash, url_for, redirect, render_templ
 from bs4 import BeautifulSoup
 import requests
 import os, datetime
-import time
+import time,json
 import re
 _basedir = os.path.abspath(os.path.dirname(__file__))
 
 h_ago = re.compile('(\d) hours ago') 
 pm = re.compile('(\d\d):(\d\d) (AM|PM) (\d{2})\/(\d{2})\/(\d{2})')
 min_ago = re.compile('\d\d min ago') 
-yesterday_wali  = re.compile('(\d\d:\d\d) (PM) (yesterday)|(\d\d:\d\d) (AM) (yesterday)')
+yesterday_wali  = re.compile('(\d\d:\d\d) (PM|AM) (yesterday)')
 
 
 print datetime.datetime.now()
@@ -37,38 +37,40 @@ def get_data(username):
 
 	time_data = []
 	obj_data = []
+	data_hours = []
+	data_mins = []
 
-	for x in range(0,number_of_pages):
-		time.sleep(0.5)
-		print "sending request for page "+ str(x) 
-		url = 'https://www.codechef.com/recent/user?page='+str(x)+'&user_handle='+str(username)
-		r = requests.get(url).json()
-		e = r["content"]
-		soup = BeautifulSoup(e, 'html.parser')
-		trs = soup.find_all('tr','kol')
-		
-		for q in trs:
-			times = str(q.contents[0].text)
-			problem_code = str(q.contents[1].a['href']).split('/')[-1]
-			status = str(q.contents[2].span['title'])
-			lang = str(q.contents[3].text)
-			obj = {'time':times,'problem_code':problem_code,'status':status,'lang':lang}
-			obj_data.append(obj)
-			# print times
-			time_data.append(times)
-			# string_to_match  = str(trs[q].text)
-			# if h_ago.match(string_to_match) or am.match(string_to_match) or pm.match(string_to_match) or time_arr.append(string_to_match):
-			# 	time_arr.append(string_to_match)					
-			# 	problem_arr.append(str(trs[q+1].text))
-			# 	langu_arr.append(str(trs[q+2].text))
-			# all_text.append(str(trs[q].text))
-		print "page "+str(x)+" done"
 
-	# w = open('output.json','w')
-	# w.write(json.dumps(obj_data))
-	# w.close()
-
-	
+	try:	
+		for x in range(0,number_of_pages):
+			# time.sleep(0.02)
+			print "sending request for page "+ str(x) 
+			url = 'https://www.codechef.com/recent/user?page='+str(x)+'&user_handle='+str(username)
+			r = requests.get(url).json()
+			e = r["content"]
+			soup = BeautifulSoup(e, 'html.parser')
+			trs = soup.find_all('tr','kol')
+			
+			for q in trs:
+				times = str(q.contents[0].text)
+				problem_code = str(q.contents[1].a['href']).split('/')[-1]
+				status = str(q.contents[2].span['title'])
+				lang = str(q.contents[3].text)
+				obj = {'time':times,'problem_code':problem_code,'status':status,'lang':lang}
+				obj_data.append(obj)
+				time_data.append(times)
+				hours_search = re.search(pm,times)
+				if hours_search:
+					hours = hours_search.group(1)
+					mins = hours_search.group(2)
+					if hours_search.group(3)=='AM':
+						data_hours.append(int(hours))
+					else:
+						data_hours.append(int(hours)+12)
+					data_mins.append(int(mins))
+			# print "page "+str(x)+" done"
+	except :
+		wwwz = "error occured saving data recieved uptill now"
 	return render_template('result.html',data=json.dumps(obj_data))
 
 if __name__ == "__main__":
