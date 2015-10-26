@@ -1,3 +1,8 @@
+matplotlib
+seaborn
+numpy
+scipy
+pandas
 requests
 beautifulsoup4==4.4.0
 fastcache==1.0.2

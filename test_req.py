@@ -3,7 +3,7 @@ import time,json
 
 # url = "http://localhost:8080/fedora/objects/test:1234?test="
 
-s   = requests
+s   = requests.Session()
 
 bogie = ''
 
