@@ -5,7 +5,15 @@ import requests
 import os, datetime
 import time,json
 import re
+import __main__
+import numpy as np
+from scipy.stats import kendalltau
+import seaborn as sns
+import matplotlib.pyplot as plt
+sns.set(style="ticks")
 _basedir = os.path.abspath(os.path.dirname(__file__))
+
+
 
 h_ago = re.compile('(\d) hours ago') 
 pm = re.compile('(\d\d):(\d\d) (AM|PM) (\d{2})\/(\d{2})\/(\d{2})')
