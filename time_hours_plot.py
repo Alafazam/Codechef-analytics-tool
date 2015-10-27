@@ -65,9 +65,10 @@ try:
 		print "page "+str(x)+" done"
 except :
 	print "error occured saving data recieved uptill now"
-
+# plt.xlabel('Purchase amount', fontsize=18)
 x = np.asarray(data_hours)
 y = np.asarray(data_mins)
 sns.jointplot(x, y, kind="hex", color="#4CB391")
-sns.plt.savefig(__main__.__file__+"2.png")
+sns.plt.xticks([x for x in range(1,24)])
+sns.plt.savefig(__main__.__file__+"4.png")
 sns.plt.show()

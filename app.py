@@ -10,6 +10,8 @@ import numpy as np
 from scipy.stats import kendalltau
 import seaborn as sns
 import matplotlib.pyplot as plt
+from cStringIO import StringIO
+
 sns.set(style="ticks")
 _basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -43,6 +45,12 @@ def index():
 
 @app.route('/get/<string:username>', methods=['GET'])
 def get_data(username):
+	time_data = []
+	data_hours = []
+	data_mins = []
+	pagez=0
+	io = StringIO()
+
 	# /^[a-z]{1}[a-z0-9_]{3,13}$/
 	if re.match('^[a-z]{1}[a-z0-9_]{3,13}$',username)==None:
 		return "Invalid username"
@@ -58,11 +66,8 @@ def get_data(username):
 
 	print 'max pages are ' + str(number_of_pages)
 
-	time_data = []
-	data_hours = []
-	data_mins = []
-	pagez=0
 	def generate(number_of_pages):
+		yield 'Loading....'
 		try:	
 			for x in range(0,number_of_pages):
 				obj_data = []
@@ -76,30 +81,39 @@ def get_data(username):
 				pagez = x
 				for q in trs:
 					times = str(q.contents[0].text)
-					problem_code = str(q.contents[1].a['href']).split('/')[-1]
-					status = str(q.contents[2].span['title'])
-					lang = str(q.contents[3].text)
-					obj = {'time':times,'problem_code':problem_code,'status':status,'lang':lang}
-					obj_data.append(obj)
-					# # time_data.append(times)
-					# hours_search = re.search(pm,times)
-					# if hours_search:
-					# 	hours = hours_search.group(1)
-					# 	mins = hours_search.group(2)
-					# 	if hours_search.group(3)=='AM':
-					# 		# data_hours.append(int(hours))
-					# 	else:
-					# 		# data_hours.append(int(hours)+12)
-					# 	data_mins.append(int(mins))
-				# print "page "+str(x)+" done"
-				yield str(obj_data)+ '\n,'
+					# problem_code = str(q.contents[1].a['href']).split('/')[-1]
+					# status = str(q.contents[2].span['title'])
+					# lang = str(q.contents[3].text)
+					# obj = {'time':times,'problem_code':problem_code,'status':status,'lang':lang}
+					# obj_data.append(obj)
+					time_data.append(times)
+					hours_search = re.search(pm,times)
+					if hours_search:
+						hours = hours_search.group(1)
+						mins = hours_search.group(2)
+						if hours_search.group(3)=='AM':
+							data_hours.append(int(hours))
+						else:
+							data_hours.append(int(hours)+12)
+						data_mins.append(int(mins))
+				print "page "+str(x)+" done"
+				# yield str(obj_data)+ '\n,'
 		except :
 			print "error occured saving data recieved uptill now"
-			pagez ='request fetched upto '+str(pagez)+' page'
-			yield ','+str(pagez)+ '\n'
+			print 'request fetched upto '+str(pagez)+' page'
+			print ','+str(pagez)+ '\n'
 		else:
-			yield 'total '+str(pagez)+ 'out of '+str(number_of_pages-1)+' \n'
-			
+			print 'total '+str(pagez)+ 'out of '+str(number_of_pages-1)+' \n'
+
+		x = np.asarray(data_hours)
+		y = np.asarray(data_mins)
+		sns.jointplot(x, y, kind="hex", color="#4CB391")
+    	# fig.savefig(io, format='png')
+    	sns.plt.savefig(io, format='png')
+    	data = io.getvalue().encode('base64')
+    	return render_template('result.html',data=data)
+
+
 	return Response(generate(number_of_pages), mimetype='text/json')
 	# return render_template('result.html',data=json.dumps(obj_data),pagez=pagez)
 
