@@ -42,21 +42,21 @@ def index():
 #             yield ','.join(row) + '\n'
 #     return Response(generate(), mimetype='text/csv')
 
-@app.route('/data', methods=['GET'])
 # @login_required
-def datadiplay():
+@app.route('/get/<string:username>', methods=['GET'])
+def get_data(username):
 	return render_template('data.html')
 
 
 
-@app.route('/get/<string:username>', methods=['GET'])
-def get_data(username):
+@app.route('/data', methods=['GET'])
+def datadiplay():
 	time_data = []
 	data_hours = []
 	data_mins = []
 	pagez=0
 	io = StringIO()
-
+	username = 'alafazam'
 	# /^[a-z]{1}[a-z0-9_]{3,13}$/
 	if re.match('^[a-z]{1}[a-z0-9_]{3,13}$',username)==None:
 		return "Invalid username"
