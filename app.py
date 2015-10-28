@@ -42,6 +42,12 @@ def index():
 #             yield ','.join(row) + '\n'
 #     return Response(generate(), mimetype='text/csv')
 
+@app.route('/data', methods=['GET'])
+# @login_required
+def datadiplay():
+	return render_template('data.html')
+
+
 
 @app.route('/get/<string:username>', methods=['GET'])
 def get_data(username):
