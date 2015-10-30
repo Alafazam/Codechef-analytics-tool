@@ -30,30 +30,33 @@ app = Flask(__name__)
 def index():
 	return render_template('index.html')
 
-# @app.route('/large.csv')
-# def generate_large_csv():
-#     def generate():
-#         for row in iter_all_rows():
-#             yield ','.join(row) + '\n'
-#     return Response(generate(), mimetype='text/csv')
 
-# @login_required
+
 @app.route('/get/<string:username>', methods=['GET'])
 def get_data(username):
 	return render_template('data.html')
 
 
-@app.route('/ajax_data/<string:username>/<int:start_page>', methods=['GET'])
-def generate__data(username,start_page):
+@app.route('/ajax_data/<string:username>', methods=['GET'])
+def generate__data(username):
+
+	start_page  = int(request.args.get('start') if request.args.get('start') else 0)
+	end_page    = int(request.args.get('end') if request.args.get('end') else 1) 
+
+	# start_page  = 0
+	# end_page    = 10 
+
 	if re.match('^[a-z]{1}[a-z0-9_]{3,13}$',username)==None:
-		return "Invalid username"
+		return json.dumps({'d':None})
+
+	if end_page < start_page or end_page < 0 or start_page < 0:
+		return json.dumps({'d':None})
+
 	def generate():
-		# for row in iter_all_rows():
-			# yield ','.join(row) + '\n'
 		s = requests.Session()
-		for x in range(0,10):
-			print "sending request for page "+ str(x+start_page) 
-			url = 'https://www.codechef.com/recent/user?page='+str(x+start_page)+'&user_handle='+str(username)
+		for x in range(start_page,end_page):
+			print "sending request for page "+ str(x) 
+			url = 'https://www.codechef.com/recent/user?page='+str(x)+'&user_handle='+str(username)
 			r = s.get(url).json()
 			e = r["content"]
 			soup = BeautifulSoup(e, 'html.parser')
@@ -66,8 +69,7 @@ def generate__data(username,start_page):
 					mins = hours_search.group(2)
 					obja = [hours,mins]
 					yield ''+json.dumps({'d':obja})+''
-					# print ''+jsonify(d=obja)+''
-					# yield "hello\n"
+		yield ''+json.dumps({'d':None})+''
 	return Response(generate())
 
 
