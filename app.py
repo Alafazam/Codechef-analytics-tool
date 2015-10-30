@@ -47,14 +47,15 @@ def generate__data(username):
 	# end_page    = 10 
 
 	if re.match('^[a-z]{1}[a-z0-9_]{3,13}$',username)==None:
-		return json.dumps({'d':None})
+		return json.dumps({'time':None})
 
 	if end_page < start_page or end_page < 0 or start_page < 0:
-		return json.dumps({'d':None})
+		return json.dumps({'time':None})
 
 	def generate():
 		s = requests.Session()
 		for x in range(start_page,end_page):
+			time.sleep(0.1)
 			print "sending request for page "+ str(x) 
 			url = 'https://www.codechef.com/recent/user?page='+str(x)+'&user_handle='+str(username)
 			r = s.get(url).json()
@@ -68,8 +69,8 @@ def generate__data(username):
 					hours = hours_search.group(1)
 					mins = hours_search.group(2)
 					obja = [hours,mins]
-					yield ''+json.dumps({'d':obja})+''
-		yield ''+json.dumps({'d':None})+''
+					yield ''+json.dumps({'time':obja})+''
+		yield ''+json.dumps({'time':None})+''
 	return Response(generate())
 
 
