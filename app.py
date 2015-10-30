@@ -1,4 +1,4 @@
-from flask import Flask,session, request, flash, url_for, redirect, render_template
+from flask import Flask,session,jsonify, request, flash, url_for, redirect, render_template
 from bs4 import BeautifulSoup
 from flask import Response
 import requests
@@ -44,36 +44,40 @@ def get_data(username):
 
 
 
-@app.route('/data', methods=['GET'])
-def datadiplay():
+@app.route('/ajax_data/', methods=['GET'])
+def datadisplay():
+	username  = request.args.get('username')
+	start_page  = int(request.args.get('from'))
+	# end_page  = request.args.get('to') 
+
 	time_data = []
 	data_hours = []
 	data_mins = []
 	pagez=0
 	# io = StringIO()
-	username = 'alafazam'
 	# /^[a-z]{1}[a-z0-9_]{3,13}$/
 	if re.match('^[a-z]{1}[a-z0-9_]{3,13}$',username)==None:
 		return "Invalid username"
 	s = requests.Session()
 
-	print 'looking for ' + username
-	url = 'https://www.codechef.com/recent/user/page=1&user_handle='+str(username)
-	r = s.get(url).json()
-	number_of_pages = r["max_page"]
+	# print 'looking for ' + username
+	# url = 'https://www.codechef.com/recent/user/page=1&user_handle='+str(username)
+	# r = s.get(url).json()
+	# number_of_pages = r["max_page"]
+	# number_of_pages = end_page - start_page
 
-	if number_of_pages==0:
-		return 'This user does not exist'
+	# if number_of_pages==0:
+	# 	return 'This user does not exist'
 
-	print 'max pages are ' + str(number_of_pages)
-	def generate(number_of_pages):
-		yield 'Loading....'
+	# print 'max pages are ' + str(number_of_pages)
+	def generate(start_page):
+		# yield 'Loading....'
 		try:	
-			for x in range(0,number_of_pages):
+			for x in range(0,10):
 				obj_data = []
 				time.sleep(0.5)
 				print "sending request for page "+ str(x) 
-				url = 'https://www.codechef.com/recent/user?page='+str(x)+'&user_handle='+str(username)
+				url = 'https://www.codechef.com/recent/user?page='+str(x+start_page)+'&user_handle='+str(username)
 				r = s.get(url).json()
 				e = r["content"]
 				soup = BeautifulSoup(e, 'html.parser')
@@ -98,7 +102,7 @@ def datadiplay():
 						# else:
 						# 	data_hours.append(int(hours)+12)
 						# data_mins.append(int(mins))
-						yield str(obja)
+						yield jsonify(data=obja)
 				print "page "+str(x)+" done"
 
 		except :
@@ -117,8 +121,8 @@ def datadiplay():
 	# return render_template('result.html',data=data)
 
 
-	return Response(generate(number_of_pages))
-	return render_template('result.html',data=json.dumps(obj_data),pagez=pagez)
+	return Response(generate(start_page),mimetype="application/json")
+	# return render_template('result.html',data=json.dumps(obj_data),pagez=pagez)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
