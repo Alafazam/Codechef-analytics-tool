@@ -44,10 +44,10 @@ def get_data(username):
 
 
 
-@app.route('/ajax_data/', methods=['GET'])
-def datadisplay():
-	username  = request.args.get('username')
-	start_page  = int(request.args.get('from'))
+@app.route('/ajax_data/<string:username>/<int:start_page>', methods=['GET'])
+def datadisplay(username,start_page):
+	# username  = request.args.get('username')
+	# start_page  = int(request.args.get('from'))
 	# end_page  = request.args.get('to') 
 
 	time_data = []
@@ -74,15 +74,15 @@ def datadisplay():
 		# yield 'Loading....'
 		try:	
 			for x in range(0,10):
-				obj_data = []
-				time.sleep(0.5)
-				print "sending request for page "+ str(x) 
+				# obj_data = []
+				# time.sleep(0.5)
+				print "sending request for page "+ str(x+start_page) 
 				url = 'https://www.codechef.com/recent/user?page='+str(x+start_page)+'&user_handle='+str(username)
 				r = s.get(url).json()
 				e = r["content"]
 				soup = BeautifulSoup(e, 'html.parser')
 				trs = soup.find_all('tr','kol')
-				pagez = x
+				# pagez = x
 				for q in trs:
 					times = str(q.contents[0].text)
 					# problem_code = str(q.contents[1].a['href']).split('/')[-1]
@@ -103,14 +103,12 @@ def datadisplay():
 						# 	data_hours.append(int(hours)+12)
 						# data_mins.append(int(mins))
 						yield jsonify(data=obja)
-				print "page "+str(x)+" done"
+				# print "page "+str(x)+" done"
 
 		except :
 			print "error occured saving data recieved uptill now"
-			print 'request fetched upto '+str(pagez)+' page'
-			print ','+str(pagez)+ '\n'
-		else:
-			print 'total '+str(pagez)+ 'out of '+str(number_of_pages-1)+' \n'
+			# print 'request fetched upto '+str(pagez)+' page'
+			# print ','+str(pagez)+ '\n'
 
 	# x = np.asarray(data_hours)
 	# y = np.asarray(data_mins)
