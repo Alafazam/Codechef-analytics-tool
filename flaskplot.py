@@ -20,7 +20,7 @@ def index():
     xs = np.linspace(-10, 10, 1000)
     ax.plot(xs, np.sin(xs), label='sin(x)')
     ax.plot(xs, np.cos(xs), label='cos(x)')
-    ax.legend()
+    # ax.legend()
 
     # Encode image to png in base64
     io = StringIO()
