@@ -75,6 +75,37 @@ def generate__data(username):
 		yield "   end="+str(datetime.datetime.now())+''
 	return Response(generate())
 
+
+@app.route('/test_route', methods=['GET'])
+def test_route():
+
+	start_page  = 0
+	end_page    = 10 
+	username = 'alafazam'
+	def generate():
+		s = requests.Session()
+		yield "start="+str(datetime.datetime.now())+'\n'
+		for x in range(start_page,end_page):
+			time.sleep(0.1)
+			print "sending request for page "+ str(x) 
+			url = 'https://www.codechef.com/recent/user?page='+str(x)+'&user_handle='+str(username)
+			r = s.get(url).json()
+			e = r["content"]
+			soup = BeautifulSoup(e, 'html.parser')
+			trs = soup.find_all('tr','kol')
+			for q in trs:
+				times = str(q.contents[0].text)
+				hours_search = re.search(pm,times)
+				if hours_search:
+					hours = hours_search.group(1)
+					mins = hours_search.group(2)
+					obja = [hours,mins]
+					# yield ''+json.dumps({'time':obja})+''
+		# yield ''+json.dumps({'time':None})+''
+		yield "   end="+str(datetime.datetime.now())+''
+	return Response(generate())
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port,debug=True)
