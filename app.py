@@ -54,7 +54,7 @@ def generate__data(username):
 
 	def generate():
 		s = requests.Session()
-		yield datetime.datetime.now()
+		yield "start="+str(datetime.datetime.now())+'\n'
 		for x in range(start_page,end_page):
 			time.sleep(0.1)
 			print "sending request for page "+ str(x) 
@@ -72,7 +72,7 @@ def generate__data(username):
 					obja = [hours,mins]
 					# yield ''+json.dumps({'time':obja})+''
 		# yield ''+json.dumps({'time':None})+''
-		yield datetime.datetime.now()
+		yield "   end="+str(datetime.datetime.now())+''
 	return Response(generate())
 
 if __name__ == "__main__":
