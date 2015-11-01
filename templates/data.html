@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-
     <title>CodeCheftool</title>
     <style>
     @font-face {
@@ -15,7 +14,8 @@
         visibility: hidden;
     }
     
-    html,body {
+    html,
+    body {
         height: 100% !important;
         min-height: 100%;
         margin: 0;
@@ -30,12 +30,12 @@
         z-index: 1000;
         background-color: #FFF;
         position: absolute;
-
     }
-    #loader_message{
-    	/*position: absolute;*/
-    	left: 20%;
-    	right: 20%;
+    
+    #loader_message {
+        /*position: absolute;*/
+        left: 20%;
+        right: 20%;
     }
     </style>
     <link rel="stylesheet" href="/static/loader_style.css">
@@ -234,18 +234,31 @@
                 </div>
             </div>
             <div>
-                <h1 id="loader_message"	style="font-family:'humor';margin-top:35%" class="text-center">
-					cooking some Awesome charts for you.
-				</h1>
+                <h1 id="loader_message" style="font-family:'humor';margin-top:35%" class="text-center">
+                    cooking some Awesome charts for you.
+                </h1>
             </div>
         </div>
     </body>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-     <script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script>
+        apllicable_texts = [
+            'cooking some Awesome charts for you.',
+            'baking some raw data.',
+            'loading oven machines.',
+            'whoa, that looks really cool.',
+            'adding cherry blue toppings.',
+            'thats to0 nice to handle,calling Adele to cook for us.'
+        ];
+    function changeText() {
+        var baketext = apllicable_texts[Math.floor(Math.random() * apllicable_texts.length)];
+        $('#loader_message').text(baketext);
+        // console.log($('#loader_message').text());
 
+    }
 
-
-     </script>
+    t = setInterval(changeText, 5000);
+    </script>
 </body>
 
 </html>
