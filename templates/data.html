@@ -242,22 +242,28 @@
     </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
     <script>
-        apllicable_texts = [
+    apllicable_texts = [
             'cooking some Awesome charts for you.',
             'baking some raw data.',
             'loading oven machines.',
             'whoa, that looks really cool.',
             'adding cherry blue toppings.',
             'thats to0 nice to handle,calling Adele to cook for us.'
-        ];
+    ];
     function changeText() {
         var baketext = apllicable_texts[Math.floor(Math.random() * apllicable_texts.length)];
         $('#loader_message').text(baketext);
-        // console.log($('#loader_message').text());
+    }
+    window.onload = function  () {
+    t = setInterval(changeText, 5000);
+    
 
     }
 
-    t = setInterval(changeText, 5000);
+
+
+
+
     </script>
 </body>
 

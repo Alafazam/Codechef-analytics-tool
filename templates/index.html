@@ -5,6 +5,27 @@
     <meta charset="UTF-8">
     <title>Codechef</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <style>
+    #modal_wrapper{
+        top:400px;
+    }
+    .modal-footer{
+        border-top: 0px; 
+    }
+    .modal-header{
+        text-align: center;
+        border-bottom: 0px; 
+    }
+    .modal-body{
+        text-align: center;
+        border-bottom: 0px; 
+    }
+    #modal-dialog{
+        width:400px;
+    }
+
+    </style>
+    
     <script>
     function go_get_it() {
         var c = document.getElementById('userhandle');
@@ -15,7 +36,7 @@
             return false;
         }
         console.log(user);
-        window.location.href = '/get/'+user.toString();
+        window.location.href = '/get/' + user.toString();
 
     }
 
@@ -27,6 +48,31 @@
 </head>
 
 <body>
+    <!-- Modal -->
+    <div id="modal_wrapper" class=''>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">Message</h4>
+                    </div>
+                    <div class="modal-body">{{message}}</div>
+                    <div class="modal-footer">
+                        <button type="button" class="close btn btn-default" data-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    </div>
+
     <div class="container">
         <div class="" style="max-width:700px;margin-top:200px;">
             <div class="form-horizontal">
@@ -49,14 +95,29 @@
                     </div>
                 </div>
                 <!-- </fieldset> -->
-                <!-- </form>	 -->
+                <!-- </form>     -->
             </div>
         </div>
     </div>
 </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
 
+
+<script>
+
+ message = '{{message}}'
+ if (message!='') {
+    $('#myModal').addClass('show');
+    $('#myModal').removeClass('fade');
+    $('.close').click(function () {
+        $('#myModal').addClass('fade');
+        $('#myModal').addClass('show');
+    });    
+ };
+
+
+</script>
 </html>
-
 <!-- 
 Code chef user analysis tool 
 @author

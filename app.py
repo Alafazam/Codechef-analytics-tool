@@ -28,13 +28,16 @@ app = Flask(__name__)
 @app.route('/', methods=['GET'])
 # @login_required
 def index():
-	return render_template('index.html')
+	return render_template('index.html',message='aaaaa')
 
 
 
 @app.route('/get/<string:username>', methods=['GET'])
 def get_data(username):
-	return render_template('data.html')
+	if re.match('^[a-z]{1}[a-z0-9_]{3,13}$',username)==None:
+		return render_template('index.html',message="Illegal Username/Input is not alphanumeric")
+
+	return render_template('data.html',username=username)
 
 
 @app.route('/ajax_data/<string:username>', methods=['GET'])
