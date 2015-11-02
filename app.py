@@ -81,7 +81,6 @@ def generate__data(username):
 
 @app.route('/test_route', methods=['GET'])
 def test_route():
-
 	start_page  = 0
 	end_page    = 10 
 	username = 'alafazam'
