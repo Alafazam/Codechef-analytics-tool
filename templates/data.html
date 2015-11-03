@@ -252,7 +252,14 @@
         'thats to0 nice to handle,calling Adele to cook for us.'
     ];
     respo = {};
-    max_page = respo.max_page;
+    hour_array=[]
+    minute_array=[]
+    problem_code_array=[]
+    qstatus_array=[]
+    date_d_array=[]
+    date_m_array=[]
+    date_y_array=[]
+    lang_array=[]
 
 
     function changeText() {
@@ -261,37 +268,47 @@
     }
     window.onload = function() {
         t = setInterval(changeText, 5000);
+        // max_page = 0;
+        max_page = 5;
         $.ajax({
-            url: 'https://www.codechef.com/recent/user?page=0&user_handle=' + username,
+            url: '/max_pages/' + username,
             type: 'GET',
-            data: '',
+            // data: '',
             success: function(data) {
-                respo = jQuery.parseJSON(data);
-                //called when successful
-                // $('#ajaxphp-results').html(data);
+                max_page = data.max_page;
+                // respo = jQuery.parseJSON(data);
             },
             error: function(e) {
                 //called when there is an error
                 //console.log(e.message);
             }
         });
+        console.log("max paages are:" + max_page);
 
+        
         per_page = 10 > max_page ? 10 : max_page;
-        hour_array=[]
-
-        // arr = jQuery.map( arr, function( n, i ) {
-        //     return ( n.toUpperCase() + i );
-        // });     
-        // .map(Number);
+        
         for (var i = 0; i < max_page; i+=per_page+1) {
             $.ajax({
                 url: '/ajax_data/' + username,
                 type: 'GET',
                 data: {start:i,end:i+per_page},
                 success: function(data) {
-                    respo = jQuery.parseJSON(data);
-                    //called when successful
-                    // $('#ajaxphp-results').html(data);
+                    // console.log(data);
+                    var obj_arr = JSON.parse(data);
+                    console.log(obj_arr);
+                    for(obj in obj_arr.content){
+                        hour_array.push(obj.hour)
+                        minute_array.push(obj.minute)
+                        problem_code_array.push(obj.problem_code)
+                        qstatus_array.push(obj.qstatus)
+                        date_d_array.push(obj.date_d)
+                        date_m_array.push(obj.date_m)
+                        date_y_array.push(obj.date_y)
+                        lang_array.push(obj.langz)   
+                    }
+                // make_charts();
+                // hide_loader();
                 },
                 error: function(e) {
                     //called when there is an error

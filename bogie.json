@@ -1,0 +1,1018 @@
+[{
+    "hours": 0,
+    "mins": 0,
+    "date_d": 0,
+    "date_m": 0,
+    "date_y": 0,
+    "problem_code": null,
+    "qstatus": null,
+    "langz": null
+}, {
+    "hours": 21,
+    "minutes": 29,
+    "date_d": 26,
+    "date_y": 26,
+    "date_m": 26,
+    "problem_code": "MDIST",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 21,
+    "minutes": 27,
+    "date_d": 26,
+    "date_y": 26,
+    "date_m": 26,
+    "problem_code": "MDIST",
+    "qstatus": "compilation error",
+    "minutes": "C++ 4.9.2"
+}, {
+    "hours": 21,
+    "minutes": 27,
+    "date_d": 26,
+    "date_y": 26,
+    "date_m": 26,
+    "problem_code": "MDIST",
+    "qstatus": "compilation error",
+    "minutes": "C++ 4.9.2"
+}, {
+    "hours": 21,
+    "minutes": 09,
+    "date_d": 26,
+    "date_y": 26,
+    "date_m": 26,
+    "problem_code": "MDIST",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.9.2"
+}, {
+    "hours": 20,
+    "minutes": 27,
+    "date_d": 26,
+    "date_y": 26,
+    "date_m": 26,
+    "problem_code": "MDIST",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.9.2"
+}, {
+    "hours": 20,
+    "minutes": 22,
+    "date_d": 26,
+    "date_y": 26,
+    "date_m": 26,
+    "problem_code": "MDIST",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.9.2"
+}, {
+    "hours": 20,
+    "minutes": 20,
+    "date_d": 26,
+    "date_y": 26,
+    "date_m": 26,
+    "problem_code": "MDIST",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.9.2"
+}, {
+    "hours": 16,
+    "minutes": 55,
+    "date_d": 26,
+    "date_y": 26,
+    "date_m": 26,
+    "problem_code": "MDIST",
+    "qstatus": "time limit exceeded",
+    "minutes": "C++ 4.9.2"
+}, {
+    "hours": 23,
+    "minutes": 28,
+    "date_d": 23,
+    "date_y": 23,
+    "date_m": 23,
+    "problem_code": "QPALIN",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 22,
+    "minutes": 55,
+    "date_d": 23,
+    "date_y": 23,
+    "date_m": 23,
+    "problem_code": "QPALIN",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 22,
+    "minutes": 52,
+    "date_d": 23,
+    "date_y": 23,
+    "date_m": 23,
+    "problem_code": "QPALIN",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 22,
+    "minutes": 23,
+    "date_d": 23,
+    "date_y": 23,
+    "date_m": 23,
+    "problem_code": "QPALIN",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.9.2"
+}, {
+    "hours": 21,
+    "minutes": 54,
+    "date_d": 23,
+    "date_y": 23,
+    "date_m": 23,
+    "problem_code": "QPALIN",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.9.2"
+}, {
+    "hours": 17,
+    "minutes": 30,
+    "date_d": 20,
+    "date_y": 20,
+    "date_m": 20,
+    "problem_code": "KSPHERES",
+    "qstatus": "None",
+    "minutes": "C++ 4.9.2"
+}, {
+    "hours": 17,
+    "minutes": 29,
+    "date_d": 20,
+    "date_y": 20,
+    "date_m": 20,
+    "problem_code": "KSPHERES",
+    "qstatus": "compilation error",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 17,
+    "minutes": 29,
+    "date_d": 20,
+    "date_y": 20,
+    "date_m": 20,
+    "problem_code": "KSPHERES",
+    "qstatus": "compilation error",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 17,
+    "minutes": 24,
+    "date_d": 20,
+    "date_y": 20,
+    "date_m": 20,
+    "problem_code": "KSPHERES",
+    "qstatus": "compilation error",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 17,
+    "minutes": 19,
+    "date_d": 20,
+    "date_y": 20,
+    "date_m": 20,
+    "problem_code": "KSPHERES",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 22,
+    "minutes": 11,
+    "date_d": 19,
+    "date_y": 19,
+    "date_m": 19,
+    "problem_code": "KSPHERES",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 22,
+    "minutes": 09,
+    "date_d": 19,
+    "date_y": 19,
+    "date_m": 19,
+    "problem_code": "KSPHERES",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 22,
+    "minutes": 08,
+    "date_d": 19,
+    "date_y": 19,
+    "date_m": 19,
+    "problem_code": "KSPHERES",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 22,
+    "minutes": 07,
+    "date_d": 19,
+    "date_y": 19,
+    "date_m": 19,
+    "problem_code": "KSPHERES",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 22,
+    "minutes": 03,
+    "date_d": 19,
+    "date_y": 19,
+    "date_m": 19,
+    "problem_code": "KSPHERES",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 21,
+    "minutes": 57,
+    "date_d": 19,
+    "date_y": 19,
+    "date_m": 19,
+    "problem_code": "KSPHERES",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 21,
+    "minutes": 54,
+    "date_d": 19,
+    "date_y": 19,
+    "date_m": 19,
+    "problem_code": "KSPHERES",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 21,
+    "minutes": 52,
+    "date_d": 19,
+    "date_y": 19,
+    "date_m": 19,
+    "problem_code": "KSPHERES",
+    "qstatus": "compilation error",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 21,
+    "minutes": 34,
+    "date_d": 19,
+    "date_y": 19,
+    "date_m": 19,
+    "problem_code": "KSPHERES",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 21,
+    "minutes": 30,
+    "date_d": 19,
+    "date_y": 19,
+    "date_m": 19,
+    "problem_code": "KSPHERES",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 21,
+    "minutes": 29,
+    "date_d": 19,
+    "date_y": 19,
+    "date_m": 19,
+    "problem_code": "KSPHERES",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 13,
+    "minutes": 08,
+    "date_d": 19,
+    "date_y": 19,
+    "date_m": 19,
+    "problem_code": "ASP",
+    "qstatus": "accepted",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 23,
+    "minutes": 01,
+    "date_d": 18,
+    "date_y": 18,
+    "date_m": 18,
+    "problem_code": "ASP",
+    "qstatus": "time limit exceeded",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 22,
+    "minutes": 49,
+    "date_d": 18,
+    "date_y": 18,
+    "date_m": 18,
+    "problem_code": "ASP",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 22,
+    "minutes": 44,
+    "date_d": 18,
+    "date_y": 18,
+    "date_m": 18,
+    "problem_code": "ASP",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 22,
+    "minutes": 33,
+    "date_d": 18,
+    "date_y": 18,
+    "date_m": 18,
+    "problem_code": "ASP",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 22,
+    "minutes": 31,
+    "date_d": 18,
+    "date_y": 18,
+    "date_m": 18,
+    "problem_code": "ASP",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 22,
+    "minutes": 29,
+    "date_d": 18,
+    "date_y": 18,
+    "date_m": 18,
+    "problem_code": "ASP",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 22,
+    "minutes": 29,
+    "date_d": 18,
+    "date_y": 18,
+    "date_m": 18,
+    "problem_code": "ASP",
+    "qstatus": "runtime error(SIGSEGV)",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 22,
+    "minutes": 28,
+    "date_d": 18,
+    "date_y": 18,
+    "date_m": 18,
+    "problem_code": "ASP",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 20,
+    "minutes": 27,
+    "date_d": 09,
+    "date_y": 09,
+    "date_m": 09,
+    "problem_code": "JUMP",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 15,
+    "minutes": 02,
+    "date_d": 09,
+    "date_y": 09,
+    "date_m": 09,
+    "problem_code": "TIMEASR",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 19,
+    "minutes": 06,
+    "date_d": 08,
+    "date_y": 08,
+    "date_m": 08,
+    "problem_code": "TIMEASR",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 15,
+    "minutes": 05,
+    "date_d": 08,
+    "date_y": 08,
+    "date_m": 08,
+    "problem_code": "TIMEASR",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 14,
+    "minutes": 52,
+    "date_d": 08,
+    "date_y": 08,
+    "date_m": 08,
+    "problem_code": "TIMEASR",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 14,
+    "minutes": 41,
+    "date_d": 08,
+    "date_y": 08,
+    "date_m": 08,
+    "problem_code": "TIMEASR",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 14,
+    "minutes": 36,
+    "date_d": 08,
+    "date_y": 08,
+    "date_m": 08,
+    "problem_code": "TIMEASR",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 23,
+    "minutes": 18,
+    "date_d": 06,
+    "date_y": 06,
+    "date_m": 06,
+    "problem_code": "JUMP",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 19,
+    "minutes": 27,
+    "date_d": 06,
+    "date_y": 06,
+    "date_m": 06,
+    "problem_code": "JUMP",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 19,
+    "minutes": 26,
+    "date_d": 06,
+    "date_y": 06,
+    "date_m": 06,
+    "problem_code": "JUMP",
+    "qstatus": "compilation error",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 23,
+    "minutes": 46,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "JUMP",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 23,
+    "minutes": 32,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "JUMP",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 21,
+    "minutes": 35,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "ADTRI",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 21,
+    "minutes": 33,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "ADTRI",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 20,
+    "minutes": 15,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "ADTRI",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 20,
+    "minutes": 14,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "ADTRI",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 20,
+    "minutes": 10,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "ADTRI",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 20,
+    "minutes": 00,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "ADTRI",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 19,
+    "minutes": 51,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "ADTRI",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 19,
+    "minutes": 49,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "ADTRI",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 19,
+    "minutes": 44,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "ADTRI",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 19,
+    "minutes": 43,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "ADTRI",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 19,
+    "minutes": 28,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "ADTRI",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 19,
+    "minutes": 27,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "ADTRI",
+    "qstatus": "compilation error",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 19,
+    "minutes": 26,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "ADTRI",
+    "qstatus": "compilation error",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 19,
+    "minutes": 19,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "ADTRI",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 19,
+    "minutes": 16,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "ADTRI",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 18,
+    "minutes": 56,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "ADTRI",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 12,
+    "minutes": 21,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "WDTBAM",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 12,
+    "minutes": 19,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "WDTBAM",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 12,
+    "minutes": 16,
+    "date_d": 05,
+    "date_y": 05,
+    "date_m": 05,
+    "problem_code": "WDTBAM",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 23,
+    "minutes": 49,
+    "date_d": 04,
+    "date_y": 04,
+    "date_m": 04,
+    "problem_code": "WDTBAM",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 23,
+    "minutes": 43,
+    "date_d": 04,
+    "date_y": 04,
+    "date_m": 04,
+    "problem_code": "WDTBAM",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 23,
+    "minutes": 39,
+    "date_d": 04,
+    "date_y": 04,
+    "date_m": 04,
+    "problem_code": "WDTBAM",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 21,
+    "minutes": 25,
+    "date_d": 04,
+    "date_y": 04,
+    "date_m": 04,
+    "problem_code": "SUBINC",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 21,
+    "minutes": 23,
+    "date_d": 04,
+    "date_y": 04,
+    "date_m": 04,
+    "problem_code": "SUBINC",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 21,
+    "minutes": 22,
+    "date_d": 04,
+    "date_y": 04,
+    "date_m": 04,
+    "problem_code": "SUBINC",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 21,
+    "minutes": 21,
+    "date_d": 04,
+    "date_y": 04,
+    "date_m": 04,
+    "problem_code": "SUBINC",
+    "qstatus": "time limit exceeded",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 21,
+    "minutes": 13,
+    "date_d": 04,
+    "date_y": 04,
+    "date_m": 04,
+    "problem_code": "SUBINC",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 23,
+    "minutes": 23,
+    "date_d": 20,
+    "date_y": 20,
+    "date_m": 20,
+    "problem_code": "STACKS",
+    "qstatus": "accepted",
+    "minutes": "C++14"
+}, {
+    "hours": 23,
+    "minutes": 01,
+    "date_d": 20,
+    "date_y": 20,
+    "date_m": 20,
+    "problem_code": "STACKS",
+    "qstatus": "time limit exceeded",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 22,
+    "minutes": 13,
+    "date_d": 20,
+    "date_y": 20,
+    "date_m": 20,
+    "problem_code": "FRGTNLNG",
+    "qstatus": "accepted",
+    "minutes": "PYTH"
+}, {
+    "hours": 1,
+    "minutes": 17,
+    "date_d": 14,
+    "date_y": 14,
+    "date_m": 14,
+    "problem_code": "DONUTS",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 12,
+    "minutes": 59,
+    "date_d": 14,
+    "date_y": 14,
+    "date_m": 14,
+    "problem_code": "MSTEP",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 12,
+    "minutes": 55,
+    "date_d": 14,
+    "date_y": 14,
+    "date_m": 14,
+    "problem_code": "MSTEP",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 12,
+    "minutes": 54,
+    "date_d": 14,
+    "date_y": 14,
+    "date_m": 14,
+    "problem_code": "MSTEP",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 3,
+    "minutes": 10,
+    "date_d": 14,
+    "date_y": 14,
+    "date_m": 14,
+    "problem_code": "WOUT",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 2,
+    "minutes": 59,
+    "date_d": 14,
+    "date_y": 14,
+    "date_m": 14,
+    "problem_code": "WOUT",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 12,
+    "minutes": 01,
+    "date_d": 10,
+    "date_y": 10,
+    "date_m": 10,
+    "problem_code": "GRGUY",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 23,
+    "minutes": 59,
+    "date_d": 09,
+    "date_y": 09,
+    "date_m": 09,
+    "problem_code": "GRGUY",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 23,
+    "minutes": 57,
+    "date_d": 09,
+    "date_y": 09,
+    "date_m": 09,
+    "problem_code": "GRGUY",
+    "qstatus": "compilation error",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 23,
+    "minutes": 27,
+    "date_d": 09,
+    "date_y": 09,
+    "date_m": 09,
+    "problem_code": "GRGUY",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 23,
+    "minutes": 25,
+    "date_d": 09,
+    "date_y": 09,
+    "date_m": 09,
+    "problem_code": "GRGUY",
+    "qstatus": "compilation error",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 23,
+    "minutes": 22,
+    "date_d": 09,
+    "date_y": 09,
+    "date_m": 09,
+    "problem_code": "GRGUY",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 23,
+    "minutes": 21,
+    "date_d": 09,
+    "date_y": 09,
+    "date_m": 09,
+    "problem_code": "GRGUY",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 23,
+    "minutes": 04,
+    "date_d": 09,
+    "date_y": 09,
+    "date_m": 09,
+    "problem_code": "GRGUY",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 22,
+    "minutes": 49,
+    "date_d": 09,
+    "date_y": 09,
+    "date_m": 09,
+    "problem_code": "GRGUY",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 15,
+    "minutes": 59,
+    "date_d": 09,
+    "date_y": 09,
+    "date_m": 09,
+    "problem_code": "COOKMACH",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 23,
+    "minutes": 31,
+    "date_d": 26,
+    "date_y": 26,
+    "date_m": 26,
+    "problem_code": "PUPPYGCD",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 23,
+    "minutes": 30,
+    "date_d": 26,
+    "date_y": 26,
+    "date_m": 26,
+    "problem_code": "PUPPYGCD",
+    "qstatus": "compilation error",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 14,
+    "minutes": 05,
+    "date_d": 26,
+    "date_y": 26,
+    "date_m": 26,
+    "problem_code": "PUPPYGM",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 14,
+    "minutes": 00,
+    "date_d": 26,
+    "date_y": 26,
+    "date_m": 26,
+    "problem_code": "GDOG",
+    "qstatus": "None",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 1,
+    "minutes": 08,
+    "date_d": 12,
+    "date_y": 12,
+    "date_m": 12,
+    "problem_code": "CAMERAS",
+    "qstatus": "time limit exceeded",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 1,
+    "minutes": 06,
+    "date_d": 12,
+    "date_y": 12,
+    "date_m": 12,
+    "problem_code": "CAMERAS",
+    "qstatus": "time limit exceeded",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 1,
+    "minutes": 00,
+    "date_d": 12,
+    "date_y": 12,
+    "date_m": 12,
+    "problem_code": "CAMERAS",
+    "qstatus": "time limit exceeded",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 12,
+    "minutes": 39,
+    "date_d": 12,
+    "date_y": 12,
+    "date_m": 12,
+    "problem_code": "CAMERAS",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 12,
+    "minutes": 37,
+    "date_d": 12,
+    "date_y": 12,
+    "date_m": 12,
+    "problem_code": "CAMERAS",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 12,
+    "minutes": 35,
+    "date_d": 12,
+    "date_y": 12,
+    "date_m": 12,
+    "problem_code": "CAMERAS",
+    "qstatus": "compilation error",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 12,
+    "minutes": 31,
+    "date_d": 12,
+    "date_y": 12,
+    "date_m": 12,
+    "problem_code": "CAMERAS",
+    "qstatus": "compilation error",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 12,
+    "minutes": 27,
+    "date_d": 12,
+    "date_y": 12,
+    "date_m": 12,
+    "problem_code": "CAMERAS",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 12,
+    "minutes": 25,
+    "date_d": 12,
+    "date_y": 12,
+    "date_m": 12,
+    "problem_code": "CAMERAS",
+    "qstatus": "runtime error(SIGSEGV)",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 12,
+    "minutes": 18,
+    "date_d": 12,
+    "date_y": 12,
+    "date_m": 12,
+    "problem_code": "CAMERAS",
+    "qstatus": "runtime error(SIGSEGV)",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 18,
+    "minutes": 11,
+    "date_d": 11,
+    "date_y": 11,
+    "date_m": 11,
+    "problem_code": "CAMERAS",
+    "qstatus": "wrong answer",
+    "minutes": "C++ 4.3.2"
+}, {
+    "hours": 18,
+    "minutes": 09,
+    "date_d": 11,
+    "date_y": 11,
+    "date_m": 11,
+    "problem_code": "CAMERAS",
+    "qstatus": "wrong answer",
+    "minutes": "C++11"
+}]
