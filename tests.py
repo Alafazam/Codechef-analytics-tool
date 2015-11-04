@@ -24,6 +24,7 @@ time_data = []
 obj_data = []
 data_hours = []
 data_mins = []
+chart_data = [['minutes','hours']]
 
 for x in range(0,number_of_pages):
 	time.sleep(0.5)
@@ -46,12 +47,16 @@ for x in range(0,number_of_pages):
 
 		hours_search = re.search(pm,times)
 		if hours_search:
-			hours = hours_search.group(1)
-			mins = hours_search.group(2)
+			hours = int(hours_search.group(1))
+			mins = int(hours_search.group(2))
 			if hours_search.group(3)=='AM':
 				data_hours.append(int(hours))
 			else:
 				data_hours.append(int(hours)+12)
+				hours +=12
+
+			chrt = [mins,hours]
+			chart_data.append(chrt)
 
 			data_mins.append(int(mins))
 
@@ -68,10 +73,10 @@ for x in range(0,number_of_pages):
 # w.write(json.dumps(hours_mins))
 # w.close()
 
-w = open('hours.json','w')
-w.write(json.dumps(data_hours))
+w = open('chart_data.json','w')
+w.write(json.dumps(chart_data))
 w.close()
 
-w = open('mins.json','w')
-w.write(json.dumps(data_mins))
-w.close()
+# w = open('mins.json','w')
+# w.write(json.dumps(data_mins))
+# w.close()

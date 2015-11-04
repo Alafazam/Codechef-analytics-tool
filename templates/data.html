@@ -41,10 +41,10 @@
     <link rel="stylesheet" href="/static/loader_style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" />
 </head>
 
 <body>
-
     <body style="">
         <div id="loading_overlay" class="loading_overlay">
             <div class="socket">
@@ -241,12 +241,16 @@
             </div>
         </div>
         <div>
-            <h1>Hello there</h1>
-        </div>
+    <div id="cal-heatmap"></div>
+    </div>
     </body>
-    <!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-    <!-- // <script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script> -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script>
+    <script type="text/javascript">
+        var cal = new CalHeatMap();
+        cal.init({});
+    </script>
     <script>
     username = '{{username}}'
     apllicable_texts = [
@@ -267,6 +271,7 @@
     date_m_array = []
     date_y_array = []
     lang_array = []
+    know_array = ['min','hours']
 
 
     function changeText() {
@@ -279,6 +284,7 @@
             $('#loading_overlay').addClass('fade');
             $('#loading_overlay').addClass('hide');
             // $('#myModal').removeClass('fade');
+
     }
 
     window.onload = function() {
@@ -324,6 +330,7 @@
                         date_m_array.push(obj.date_m)
                         date_y_array.push(obj.date_y)
                         lang_array.push(obj.langz)
+                        know_array.push([obj.minute,obj.hour])
                     }
                     // make_charts();
                     hide_loader();
