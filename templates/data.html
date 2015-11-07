@@ -397,6 +397,7 @@
         // max_a = 2
         for (var i = 0; i <= max_a; i++) {
             var per_page = 9;
+            console.log("sending request from " + (i * 10) + ' to ' + ((i * 10) + per_page));
             $.ajax({
                 url: '/ajax_data/' + username,
                 type: 'GET',
@@ -405,8 +406,8 @@
                     end: (i * 10) + per_page
                 },
                 success: function(data) {
+                    console.log(data);
                     obj_arr = JSON.parse(data);
-                    // console.log(obj_arr.content);
                     for (bj in obj_arr.content) {
                         var obj = obj_arr.content[bj];
                         hour_array.push(Number(obj.hours));
@@ -422,6 +423,8 @@
                     }
                     // make_charts();
                     loader_count++;
+                    console.log("loader_count is " + loader_count);
+                    console.log("max_a is " + max_a);
                     if (loader_count > max_a) {
                         hide_loader();
                         chart_init(know_array);
@@ -432,9 +435,6 @@
                     //console.log(e.message);
                 }
             });
-    
-        // console.log(loader_count);
-
         };
     }
     </script>
