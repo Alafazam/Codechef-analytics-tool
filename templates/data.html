@@ -420,13 +420,13 @@ function chart_init(know_array) {
                         var obj = obj_arr.content[bj];
                         hour_array.push(Number(obj.hours));
                         minute_array.push(Number(obj.minutes));
-                        console.log(Number(obj.hours)+" : "+Number(obj.minutes));
-                        // problem_code_array.push(obj.problem_code)
-                        // qstatus_array.push(obj.qstatus)
-                        // date_d_array.push(obj.date_d)
-                        // date_m_array.push(obj.date_m)
-                        // date_y_array.push(obj.date_y)
-                        // lang_array.push(obj.langz)
+                        // console.log(Number(obj.hours)+" : "+Number(obj.minutes));
+                        problem_code_array.push(obj.problem_code);
+                        qstatus_array.push(obj.qstatus);
+                        date_d_array.push(Number(obj.date_d));
+                        date_m_array.push(Number(obj.date_m));
+                        date_y_array.push(Number(obj.date_y));
+                        lang_array.push(obj.langz);
                         know_array.push([Number(obj.hours), Number(obj.minutes)]);
                     }
                     // make_charts();
