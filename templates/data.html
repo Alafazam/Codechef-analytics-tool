@@ -252,6 +252,7 @@
     <script src="http://cdn.zingchart.com/zingchart.min.js"></script>
     <script>
     username = '{{username}}'
+    max_page = Number('{{max_page}}')
     apllicable_texts = [
         'cooking some Awesome charts for you.',
         'baking some raw data.',
@@ -272,6 +273,7 @@
     lang_array = []
     know_array = []
     loader_count = 0;
+    max_a = ~~(max_page / 10);
 
     function changeText() {
         var baketext = apllicable_texts[Math.floor(Math.random() * apllicable_texts.length)];
@@ -286,7 +288,7 @@
 
     }
 
-function chart_init(know_array) {
+    function chart_init(know_array) {
         zingchart.THEME = "classic";
         // console.log(know_array);
 
@@ -322,7 +324,7 @@ function chart_init(know_array) {
                 "labels": [],
                 "scale-x": {
                     "min-value": 0,
-                    "values":"0:24:1",
+                    "values": "0:24:1",
                     // "offset-start": 10,
                     // "offset-end": 10,
                     // "items-overlap": true,
@@ -332,7 +334,7 @@ function chart_init(know_array) {
                     }
                 },
                 "scale-y": {
-                    "values":"0:61:5",
+                    "values": "0:61:5",
                     // "min-value": "auto",
                     // "offset-start": 10,
                     // "offset-end": 5,
@@ -384,35 +386,23 @@ function chart_init(know_array) {
     }
     window.onload = function() {
         t = setInterval(changeText, 5000);
-        max_page = 0;
-        // max_page = 5;
-        $.ajax({
-            url: '/max_pages/' + username,
-            type: 'GET',
-            // data: '',
-            success: function(data) {
-                max_page = Number(data.max_page);
-                // respo = jQuery.parseJSON(data);
-            },
-            error: function(e) {
-                //called when there is an error
-                //console.log(e.message);
-            }
-        });
+
         console.log("max paages are:" + max_page);
 
-        per_page = 10 > max_page ? 10 : max_page;
-        max_a = ~~(max_page/per_page);
+        max_page--;
 
+        // per_page = 10 < max_page ? 10 : max_page;
+        // per_page = 10
+
+        // max_a = 2
         for (var i = 0; i <= max_a; i++) {
-            console.log("sending request from "+i+' to '+ (i+per_page))
-            if(i==max_a){per_page=max_page%10 + 1;}
+            var per_page = 9;
             $.ajax({
                 url: '/ajax_data/' + username,
                 type: 'GET',
                 data: {
-                    start: i,
-                    end: i + per_page-1
+                    start: i * 10,
+                    end: (i * 10) + per_page
                 },
                 success: function(data) {
                     obj_arr = JSON.parse(data);
@@ -431,7 +421,8 @@ function chart_init(know_array) {
                         know_array.push([Number(obj.hours), Number(obj.minutes)]);
                     }
                     // make_charts();
-                    if (i == max_a) {
+                    loader_count++;
+                    if (loader_count > max_a) {
                         hide_loader();
                         chart_init(know_array);
                     };
@@ -441,11 +432,11 @@ function chart_init(know_array) {
                     //console.log(e.message);
                 }
             });
+    
+        // console.log(loader_count);
+
         };
     }
-
-
-    
     </script>
 </body>
 

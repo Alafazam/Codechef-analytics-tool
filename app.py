@@ -37,15 +37,16 @@ def get_data(username):
 	if re.match('^[a-z]{1}[a-z0-9_]{3,13}$',username)==None:
 		return render_template('index.html',message="Illegal Username/Input is not alphanumeric")
 
-	return render_template('data.html',username=username)
+	url = 'https://www.codechef.com/recent/user?page=0&user_handle='+str(username)
+	r = requests.get(url).json()
+	e = r["max_page"]
+	print 'max_page :'+ str(e)
+	return render_template('data.html',username=username,max_page=int(e))
 
 @app.route('/max_pages/<string:username>', methods=['GET'])
 def get_max_page(username):
 	if re.match('^[a-z]{1}[a-z0-9_]{3,13}$',username)==None:
 		return render_template('index.html',message="Illegal Username/Input is not alphanumeric")
-	url = 'https://www.codechef.com/recent/user?page=0&user_handle='+str(username)
-	r = requests.get(url).json()
-	e = r["max_page"]
 	return jsonify({'max_page':e})
 
 
@@ -69,11 +70,14 @@ def generate__data(username):
 		s = requests.Session()
 		# yield "start="+str(datetime.datetime.now())+'\n'
 		yield '{ "content":[ { "hours":null, "mins":null, "date_d":null, "date_m":null, "date_y":null, "problem_code":null, "qstatus":null, "langz":null } '     
-		for x in range(start_page,end_page):
+		for x in range(start_page,end_page+1):
 			time.sleep(0.1)
 			print "sending request for page "+ str(x) 
 			url = 'https://www.codechef.com/recent/user?page='+str(x)+'&user_handle='+str(username)
 			r = s.get(url).json()
+			max_pages = r['max_page']
+			if x > max_pages:
+				break
 			e = r["content"]
 			soup = BeautifulSoup(e, 'html.parser')
 			trs = soup.find_all('tr','kol')
