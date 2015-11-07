@@ -294,10 +294,6 @@ function chart_init(know_array) {
             "graphset": [{
                 "type": "scatter",
                 "background-color": "#fff #fbfbfb",
-                "title": {
-                    "text": "Time based heatmap showing frequency of submitted sols<br>Source: Codechef",
-                    "background-color": "#00a679 #33b894"
-                },
                 "plotarea": {
                     "margin": "60 40 dynamic dynamic"
                 },
@@ -322,35 +318,25 @@ function chart_init(know_array) {
                         "cursor": "hand"
                     }
                 },
-                "shapes": [{
-                    "type": "star5",
-                    "x": "89%",
-                    "y": "24.6%",
-                    "size": 6,
-                    "background-color": "#00a679"
-                }],
-                "labels": [{
-                    "text": "Selected",
-                    "x": "91%",
-                    "y": "23%",
-                    "bold": true,
-                    "font-size": 11
-                }],
+                "shapes": [],
+                "labels": [],
                 "scale-x": {
                     "min-value": 0,
-                    "offset-start": 10,
-                    "offset-end": 10,
-                    "items-overlap": true,
-                    "max-items": 24,
+                    "values":"0:24:1",
+                    // "offset-start": 10,
+                    // "offset-end": 10,
+                    // "items-overlap": true,
+                    // "max-items": 24,
                     "label": {
                         "text": "Hours"
                     }
                 },
                 "scale-y": {
-                    "min-value": "auto",
-                    "offset-start": 10,
-                    "offset-end": 5,
-                    "max-items": 25,
+                    "values":"0:61:5",
+                    // "min-value": "auto",
+                    // "offset-start": 10,
+                    // "offset-end": 5,
+                    // "max-items": 25,
                     "label": {
                         "text": "Minutes"
                     }
