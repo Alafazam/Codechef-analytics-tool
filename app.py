@@ -93,8 +93,9 @@ def generate__data(username):
 				problem_code = str(q.contents[1].a['href']).split('/')[-1]
 				qstatus = str(q.contents[2].span['title']) if q.contents[2].span['title'] else 'None'
 				langz = str(q.contents[3].text)
-				response_string += ', "problem_code":"'+ problem_code + '", "qstatus":"'+ qstatus + '", "minutes":"'+ langz+ '" } '	
-				yield ''+ response_string 
+				response_string += ', "problem_code":"'+ problem_code + '", "qstatus":"'+ qstatus + '", "langz":"'+ langz+ '" } '	
+				yield ''+ response_string
+
 		# yield "   end="+str(datetime.datetime.now())+''
 		yield " ] }"
 	return Response(generate())
