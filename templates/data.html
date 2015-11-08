@@ -384,6 +384,11 @@
             width: 900
         });
     }
+
+    function fill_other_tables () {
+    }
+
+
     window.onload = function() {
         t = setInterval(changeText, 5000);
 
@@ -407,6 +412,7 @@
                 },
                 success: function(data) {
                     // console.log(data);
+                    loader_count++;
                     obj_arr = JSON.parse(data);
                     for (bj in obj_arr.content) {
                         var obj = obj_arr.content[bj];
@@ -422,7 +428,6 @@
                         know_array.push([Number(obj.hours), Number(obj.minutes)]);
                     }
                     // make_charts();
-                    loader_count++;
                     // console.log("loader_count is " + loader_count);
                     // console.log("max_a is " + max_a);
                     if (loader_count > max_a) {

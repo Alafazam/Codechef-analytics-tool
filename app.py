@@ -36,12 +36,17 @@ def index():
 def get_data(username):
 	if re.match('^[a-z]{1}[a-z0-9_]{3,13}$',username)==None:
 		return render_template('index.html',message="Illegal Username/Input is not alphanumeric")
-
+	ef = 0
 	url = 'https://www.codechef.com/recent/user?page=0&user_handle='+str(username)
-	r = requests.get(url).json()
-	e = r["max_page"]
-	print 'max_page :'+ str(e)
-	return render_template('data.html',username=username,max_page=int(e))
+	try:
+		r = requests.get(url).json()
+		ef = r["max_page"]
+		print 'max_page :'+ str(ef)
+	except Exception, e:
+		ef = 10
+		print e
+	finally:
+		return render_template('data.html',username=username,max_page=int(ef))
 
 @app.route('/max_pages/<string:username>', methods=['GET'])
 def get_max_page(username):
