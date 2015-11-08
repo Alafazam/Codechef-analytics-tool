@@ -48,12 +48,6 @@ def get_data(username):
 	finally:
 		return render_template('data.html',username=username,max_page=int(ef))
 
-@app.route('/max_pages/<string:username>', methods=['GET'])
-def get_max_page(username):
-	if re.match('^[a-z]{1}[a-z0-9_]{3,13}$',username)==None:
-		return render_template('index.html',message="Illegal Username/Input is not alphanumeric")
-	return jsonify({'max_page':e})
-
 
 
 @app.route('/ajax_data/<string:username>', methods=['GET'])
