@@ -26,7 +26,6 @@ app = Flask(__name__)
 
 
 @app.route('/', methods=['GET'])
-# @login_required
 def index():
 	return render_template('index.html',message='')
 
@@ -73,30 +72,34 @@ def generate__data(username):
 			time.sleep(0.1)
 			print "sending request for page "+ str(x) 
 			url = 'https://www.codechef.com/recent/user?page='+str(x)+'&user_handle='+str(username)
-			r = s.get(url).json()
-			max_pages = r['max_page']
-			if x > max_pages:
-				break
-			e = r["content"]
-			soup = BeautifulSoup(e, 'html.parser')
-			trs = soup.find_all('tr','kol')
-			for q in trs:
-				response_string = ''
-				times = str(q.contents[0].text)
-				search_grp = re.search(pm,times)
-				if search_grp:
-					hours  = int(search_grp.group(1))
-					mins   = search_grp.group(2)
-					am_pm  = search_grp.group(3)
-					date_d = search_grp.group(4)
-					date_m = search_grp.group(5)
-					date_y = search_grp.group(6)
-					response_string +=',{ "hours":"' + str(hours+(12*int(am_pm=='PM'))) + '", "minutes":"'+ mins + '", "date_d":"' + date_d+ '", "date_y":"' + date_y+ '", "date_m":"' + date_m + '"' 			
-					problem_code = str(q.contents[1].a['href']).split('/')[-1]
-					qstatus = str(q.contents[2].span['title']) if q.contents[2].span['title'] else 'None'
-					langz = str(q.contents[3].text)
-					response_string += ', "problem_code":"'+ problem_code + '", "qstatus":"'+ qstatus + '", "langz":"'+ langz+ '" } '	
-				yield ''+ response_string
+			try:
+				r = s.get(url).json()
+				max_pages = r['max_page']
+				if x > max_pages:
+					break
+				e = r["content"]
+				soup = BeautifulSoup(e, 'html.parser')
+				trs = soup.find_all('tr','kol')
+				for q in trs:
+					response_string = ''
+					times = str(q.contents[0].text)
+					search_grp = re.search(pm,times)
+					if search_grp:
+						hours  = int(search_grp.group(1))
+						mins   = search_grp.group(2)
+						am_pm  = search_grp.group(3)
+						date_d = search_grp.group(4)
+						date_m = search_grp.group(5)
+						date_y = search_grp.group(6)
+						response_string +=',{ "hours":"' + str(hours+(12*int(am_pm=='PM'))) + '", "minutes":"'+ mins + '", "date_d":"' + date_d+ '", "date_y":"' + date_y+ '", "date_m":"' + date_m + '"' 			
+						problem_code = str(q.contents[1].a['href']).split('/')[-1]
+						qstatus = str(q.contents[2].span['title']) if q.contents[2].span['title'] else 'None'
+						langz = str(q.contents[3].text)
+						response_string += ', "problem_code":"'+ problem_code + '", "qstatus":"'+ qstatus + '", "langz":"'+ langz+ '" } '	
+						yield ''+ response_string
+			except Exception, e:
+				print e
+
 		yield " ] }"
 	return Response(generate())
 
@@ -131,17 +134,14 @@ def test_route():
 						date_m = search_grp.group(4)
 						date_y = search_grp.group(4)
 						response_string += ', '    
-						response_string +=',{ "hours":"' + str(hours+(12*int(am_pm=='PM'))) + '", "minutes":"'+ mins + '", "date_d":"' + date_d+ '", "date_y":"' + date_y+ '", "date_m":"' + date_m + '"' 
-					
-					problem_code = str(q.contents[1].a['href']).split("/")[-1]
-					qstatus = str(q.contents[2].span["title"]) if q.contents[2].span["title"] else "None"
-					langz = str(q.contents[3].text)
-					response_string += ', "problem_code":"'+ problem_code + '", "qstatus":"'+ qstatus + '", "minutes":"'+ langz+ '" } '	
-					yield ''+ response_string 
+						response_string +=',{ "hours":"' + str(hours+(12*int(am_pm=='PM'))) + '", "minutes":"'+ mins + '", "date_d":"' + date_d+ '", "date_y":"' + date_y+ '", "date_m":"' + date_m + '"' 				
+						problem_code = str(q.contents[1].a['href']).split("/")[-1]
+						qstatus = str(q.contents[2].span["title"]) if q.contents[2].span["title"] else "None"
+						langz = str(q.contents[3].text)
+						response_string += ', "problem_code":"'+ problem_code + '", "qstatus":"'+ qstatus + '", "minutes":"'+ langz+ '" } '	
+						yield ''+ response_string 
 			except Exception, e:
 				print e
-			finally:
-				pass
 			
 			# yield "   end="+str(datetime.datetime.now())+''
 		yield " ] }"
