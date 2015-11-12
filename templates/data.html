@@ -265,16 +265,17 @@
     ];
     t = 0;
     respo = {};
-    hour_array = []
-    minute_array = []
-    problem_code_array = []
-    qstatus_array = []
-    date_d_array = []
-    date_m_array = []
-    date_y_array = []
-    lang_array = []
-    know_array = []
+    hour_array = [];
+    minute_array = [];
+    problem_code_array = [];
+    qstatus_array = [];
+    date_d_array = [];
+    date_m_array = [];
+    date_y_array = [];
+    lang_array = [];
+    know_array = [];
     loader_count = 0;
+    fine_arr = new Array([]);
     max_a = ~~(max_page / 10);
 
     function changeText() {
@@ -387,8 +388,9 @@
         });
     }
 
-    function fill_other_tables (know_array) {
-            $('#totalSols').text('We have fetched '+ know_array.length +' soutions');        
+    function fill_other_tables(know_array) {
+        $('#totalSols').text('We have fetched ' + know_array.length + ' soutions');
+        console.log(fine_arr);
     }
 
 
@@ -429,6 +431,12 @@
                         date_y_array.push(Number(obj.date_y));
                         lang_array.push(obj.langz);
                         know_array.push([Number(obj.hours), Number(obj.minutes)]);
+
+                        if (!fine_arr[Number(obj.hours)][Number(obj.minutes)]) {
+                            fine_arr[Number(obj.hours)][Number(obj.minutes)]=1;
+                        }else{
+                            fine_arr[Number(obj.hours)][Number(obj.minutes)]++;
+                        };
                     }
                     // make_charts();
                     // console.log("loader_count is " + loader_count);
