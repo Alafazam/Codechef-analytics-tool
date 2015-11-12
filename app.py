@@ -91,7 +91,7 @@ def generate__data(username):
 						date_d = search_grp.group(4)
 						date_m = search_grp.group(5)
 						date_y = search_grp.group(6)
-						response_string +=',{ "hours":"' + str(hours+(12*int(am_pm=='PM'))) + '", "minutes":"'+ mins + '", "date_d":"' + date_d+ '", "date_y":"' + date_y+ '", "date_m":"' + date_m + '"' 			
+						response_string +=',{ "hours":"' + str((hours+(12*int(am_pm=='PM')))%24) + '", "minutes":"'+ mins + '", "date_d":"' + date_d+ '", "date_y":"' + date_y+ '", "date_m":"' + date_m + '"' 			
 						problem_code = str(q.contents[1].a['href']).split('/')[-1]
 						qstatus = str(q.contents[2].span['title']) if q.contents[2].span['title'] else 'None'
 						langz = str(q.contents[3].text)
