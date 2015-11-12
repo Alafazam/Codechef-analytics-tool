@@ -99,6 +99,7 @@ def generate__data(username):
 						yield ''+ response_string
 			except Exception, e:
 				print e
+				# todo error handling
 
 		yield " ] }"
 	return Response(generate())

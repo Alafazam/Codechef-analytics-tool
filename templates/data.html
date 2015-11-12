@@ -243,7 +243,9 @@
         </div>
         <div>
             <!-- <div id="cal-heatmap"></div> -->
+            <h1>Your Heat map of all your commits</h1>
             <div id='chartDiv'></div>
+            <div id="totalSols"></div>
         </div>
     </body>
     <!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script> -->
@@ -385,7 +387,8 @@
         });
     }
 
-    function fill_other_tables () {
+    function fill_other_tables (know_array) {
+            $('#totalSols').text('We have fetched '+ know_array.length +' soutions');        
     }
 
 
@@ -433,6 +436,7 @@
                     if (loader_count > max_a) {
                         hide_loader();
                         chart_init(know_array);
+                        fill_other_tables(know_array);
                     };
                 },
                 error: function(e) {
