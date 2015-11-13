@@ -40,6 +40,7 @@
     </style>
     <link rel="stylesheet" href="/static/loader_style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
     <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" /> -->
     <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" /> -->
 </head>
@@ -243,15 +244,17 @@
         </div>
         <div>
             <!-- <div id="cal-heatmap"></div> -->
-            <h1>Your Heat map of all your commits</h1>
-            <div id='chartDiv'></div>
+            <h1>Heat map of all your commits</h1>
+            <!-- <div id='chartDiv'></div> -->
+            <div class="ct-chart ct-perfect-fourth"></div>
             <div id="totalSols"></div>
         </div>
     </body>
     <!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
     <!-- // <script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script> -->
-    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <!-- // <script src="https://cdn.zingchart.com/zingchart.min.js"></script> -->
     <script>
     username = '{{username}}'
     max_page = Number('{{max_page}}')
@@ -291,101 +294,120 @@
 
     }
 
-    function chart_init(know_array) {
-        zingchart.THEME = "classic";
-        // console.log(know_array);
+    // function chart_init(know_array) {
+    //     zingchart.THEME = "classic";
+    //     // console.log(know_array);
 
-        var myJson = {
-            "graphset": [{
-                "type": "scatter",
-                "background-color": "#fff #fbfbfb",
-                "plotarea": {
-                    "margin": "60 40 dynamic dynamic"
-                },
-                "legend": {
-                    "margin-top": 55,
-                    "shadow": 0,
-                    "alpha": 0.8,
-                    "border-color": "#00a679",
-                    "border-radius": 5,
-                    "border-width": 3,
-                    "adjust-layout": true,
-                    "cursor": "hand",
-                    "item": {
-                        "bold": true,
-                        "cursor": "hand"
-                    },
-                    "marker": {
-                        "type": "circle",
-                        "size": 5,
-                        "border-color": "#fff",
-                        "border-width": 1,
-                        "cursor": "hand"
-                    }
-                },
-                "shapes": [],
-                "labels": [],
-                "scale-x": {
-                    "min-value": 0,
-                    "values": "0:24:1",
-                    // "offset-start": 10,
-                    // "offset-end": 10,
-                    // "items-overlap": true,
-                    // "max-items": 24,
-                    "label": {
-                        "text": "Hours"
-                    }
-                },
-                "scale-y": {
-                    "values": "0:61:5",
-                    // "min-value": "auto",
-                    // "offset-start": 10,
-                    // "offset-end": 5,
-                    // "max-items": 25,
-                    "label": {
-                        "text": "Minutes"
-                    }
-                },
-                "plot": {
-                    "selection-mode": "multiple",
-                    "selected-marker": {
-                        "background-color": "#00a679",
-                        "border-width": 1,
-                        "border-color": "#00a679",
-                        "size": 6,
-                        "type": "star5"
-                    }
-                },
-                "series": [{
-                    "marker": {
-                        "type": "circle",
-                        "background-color": "#e24b77",
-                        "border-width": 1,
-                        "border-color": "#fff",
-                        "shadow": 0
-                    },
-                    "tooltip": {
-                        "padding": 10,
-                        "background-color": "#FFF",
-                        "border-color": "#e24b77",
-                        "color": "#e24b77",
-                        "border-width": 2,
-                        "alpha": "0.8",
-                        "text-align": "left",
-                        "border-radius": 8,
-                        "text": "%k / %v"
-                    },
-                    "text": "Frequency",
-                    "values": know_array
-                }]
-            }]
+    //     var myJson = {
+    //         "graphset": [{
+    //             "type": "scatter",
+    //             "background-color": "#fff #fbfbfb",
+    //             "plotarea": {
+    //                 "margin": "60 40 dynamic dynamic"
+    //             },
+    //             "legend": {
+    //                 "margin-top": 55,
+    //                 "shadow": 0,
+    //                 "alpha": 0.8,
+    //                 "border-color": "#00a679",
+    //                 "border-radius": 5,
+    //                 "border-width": 3,
+    //                 "adjust-layout": true,
+    //                 "cursor": "hand",
+    //                 "item": {
+    //                     "bold": true,
+    //                     "cursor": "hand"
+    //                 },
+    //                 "marker": {
+    //                     "type": "circle",
+    //                     "size": 5,
+    //                     "border-color": "#fff",
+    //                     "border-width": 1,
+    //                     "cursor": "hand"
+    //                 }
+    //             },
+    //             "shapes": [],
+    //             "labels": [],
+    //             "scale-x": {
+    //                 "min-value": 0,
+    //                 "values": "0:24:1",
+    //                 // "offset-start": 10,
+    //                 // "offset-end": 10,
+    //                 // "items-overlap": true,
+    //                 // "max-items": 24,
+    //                 "label": {
+    //                     "text": "Hours"
+    //                 }
+    //             },
+    //             "scale-y": {
+    //                 "values": "0:61:5",
+    //                 // "min-value": "auto",
+    //                 // "offset-start": 10,
+    //                 // "offset-end": 5,
+    //                 // "max-items": 25,
+    //                 "label": {
+    //                     "text": "Minutes"
+    //                 }
+    //             },
+    //             "plot": {
+    //                 "selection-mode": "multiple",
+    //                 "selected-marker": {
+    //                     "background-color": "#00a679",
+    //                     "border-width": 1,
+    //                     "border-color": "#00a679",
+    //                     "size": 6,
+    //                     "type": "star5"
+    //                 }
+    //             },
+    //             "series": [{
+    //                 "marker": {
+    //                     "type": "circle",
+    //                     "background-color": "#e24b77",
+    //                     "border-width": 1,
+    //                     "border-color": "#fff",
+    //                     "shadow": 0
+    //                 },
+    //                 "tooltip": {
+    //                     "padding": 10,
+    //                     "background-color": "#FFF",
+    //                     "border-color": "#e24b77",
+    //                     "color": "#e24b77",
+    //                     "border-width": 2,
+    //                     "alpha": "0.8",
+    //                     "text-align": "left",
+    //                     "border-radius": 8,
+    //                     "text": "%k / %v"
+    //                 },
+    //                 "text": "Frequency",
+    //                 "values": know_array
+    //             }]
+    //         }]
+    //     };
+    //     zingchart.render({
+    //         id: 'chartDiv',
+    //         data: myJson,
+    //         height: 400,
+    //         width: 900
+    //     });
+    // }
+    function create_charta() {
+        var _labels = [];
+        for (var i = 1; i < 32; i++) {
+            _labels[i] = i;
         };
-        zingchart.render({
-            id: 'chartDiv',
-            data: myJson,
-            height: 400,
-            width: 900
-        });
+        var data = {
+            // A labels array that can contain any sort of values
+            labels: _labels,
+            // Our series array that contains series objects or in this case series data arrays
+            series: [
+                date_d_array
+            ]
+        };
+
+        // Create a new line chart object where as first parameter we pass in a selector
+        // that is resolving to our chart container element. The Second parameter
+        // is the actual data object.
+        new Chartist.Bar('.ct-chart', data);
     }
 
     function fill_other_tables(know_array) {
@@ -396,7 +418,10 @@
 
     window.onload = function() {
         for (var i = 1; i < 25; i++) {
-            fine_arr[i]=[];
+            fine_arr[i] = [];
+        };
+        for (var i = 0; i < 32; i++) {
+            date_d_array[i] = 0;
         };
         t = setInterval(changeText, 5000);
 
@@ -429,15 +454,15 @@
                         // console.log(Number(obj.hours)+" : "+Number(obj.minutes));
                         problem_code_array.push(obj.problem_code);
                         qstatus_array.push(obj.qstatus);
-                        date_d_array.push(Number(obj.date_d));
+                        date_d_array.[Number(obj.date_d)]++;
                         date_m_array.push(Number(obj.date_m));
                         date_y_array.push(Number(obj.date_y));
                         lang_array.push(obj.langz);
                         know_array.push([Number(obj.hours), Number(obj.minutes)]);
 
                         if (!fine_arr[Number(obj.hours)][Number(obj.minutes)]) {
-                            fine_arr[Number(obj.hours)][Number(obj.minutes)]=1;
-                        }else{
+                            fine_arr[Number(obj.hours)][Number(obj.minutes)] = 1;
+                        } else {
                             fine_arr[Number(obj.hours)][Number(obj.minutes)]++;
                         };
                     }
@@ -446,8 +471,10 @@
                     // console.log("max_a is " + max_a);
                     if (loader_count > max_a) {
                         hide_loader();
-                        chart_init(know_array);
+                        create_charta();
+                        // chart_init(know_array);
                         fill_other_tables(know_array);
+
                     };
                 },
                 error: function(e) {
