@@ -292,7 +292,7 @@
         $('#loading_overlay').addClass('fade');
         $('#loading_overlay').addClass('hide');
         $('#mynano').addClass('hide');
-        
+
         // $('#myModal').removeClass('fade');
 
     }
@@ -405,7 +405,11 @@
             // Our series array that contains series objects or in this case series data arrays
             series: [
                 date_d_array
-            ]
+            ],
+            axisY: {
+                type: Chartist.AutoScaleAxis,
+                onlyInteger: true
+            }
         };
         var options = {
             width: 1200,
@@ -465,7 +469,7 @@
                 success: function(data) {
                     // console.log(data);
                     loader_count++;
-                    nanobar.go(~~((loader_count/max_page)*100));
+                    nanobar.go(~~((loader_count / max_page) * 100));
                     // ~~(max_page / 10);
                     obj_arr = JSON.parse(data);
                     for (bj in obj_arr.content) {
