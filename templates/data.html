@@ -46,7 +46,18 @@
     .ct-label {
         color: black;
     }
-    .center { float: none; margin-left: auto; margin-right: auto; }
+    
+    .center {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .ct-golden-section {
+        display: block;
+        position: relative;
+        width: 1200px;
+    }
     </style>
     <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" /> -->
     <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" /> -->
@@ -414,18 +425,21 @@
             ]
         };
         var options = {
+            showArea: true,
+            showLine: false,
+            showPoint: false,
             axisY: {
                 type: Chartist.AutoScaleAxis,
                 onlyInteger: true
             },
-            width: 800,
+            width: 1200,
             height: 600
         };
 
         // Create a new line chart object where as first parameter we pass in a selector
         // that is resolving to our chart container element. The Second parameter
         // is the actual data object.
-        new Chartist.Bar('.ct-chart', data, options);
+        new Chartist.Line('.ct-chart', data, options);
     }
 
     function fill_other_tables(know_array) {
