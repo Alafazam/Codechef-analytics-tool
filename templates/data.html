@@ -264,7 +264,7 @@
             <!-- <div id="cal-heatmap"></div> -->
             <h1>Lets see which days you are most active.</h1>
             <!-- <div id='chartDiv'></div> -->
-            <div class="center ct-chart ct-golden-section"></div>
+            <div id="chartista" class="center ct-chart ct-golden-section hide"></div>
             <div id="totalSols"></div>
         </div>
     </body>
@@ -308,9 +308,8 @@
         clearInterval(t);
         $('#loading_overlay').addClass('fade');
         $('#loading_overlay').addClass('hide');
+        $('#chartista').removeClass('hide');
         $('#mynano').addClass('hide');
-        
-        // $('#myModal').removeClass('fade');
 
     }
 
@@ -515,10 +514,10 @@
                     // console.log("loader_count is " + loader_count);
                     // console.log("max_a is " + max_a);
                     if (loader_count > max_a) {
-                        // hide_loader();
-                        // create_charta();
+                        hide_loader();
+                        create_charta();
                         // chart_init(know_array);
-                        // fill_other_tables(know_array);
+                        fill_other_tables(know_array);
 
                     };
                 },
