@@ -42,11 +42,13 @@
     <script src="/static/nanobar.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/keen-dashboards.css" />
+
     <style>
     .ct-label {
         color: black;
+        font-size: 0.95rem;
     }
-    
     .center {
         float: none;
         margin-left: auto;
@@ -262,10 +264,104 @@
         </div>
         <div>
             <!-- <div id="cal-heatmap"></div> -->
-            <h1>Lets see which days you are most active.</h1>
+            <!-- <h1>Lets see which days you are most active.</h1> -->
             <!-- <div id='chartDiv'></div> -->
-            <div id="chartista" class="center ct-chart ct-golden-section hide"></div>
-            <div id="totalSols"></div>
+            <!-- <div id="totalSols"></div> -->
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            Questions solved date wise
+                        </div>
+                        <div class="chart-stage">
+                            <!-- <div id="chart-01"></div> -->
+                            <div id="chartista" class="center ct-chart hide"></div>
+                        </div>
+                        <div class="chart-notes">
+                            <!-- This is a sample text region to describe this chart. -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            <!-- Pageviews by browser (past 5 days) -->
+                        </div>
+                        <div class="chart-stage">
+                            <div id="chart-02"></div>
+                        </div>
+                        <div class="chart-notes">
+                            <!-- Notes go down here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            <!-- Impressions by advertiser -->
+                        </div>
+                        <div class="chart-stage">
+                            <div id="chart-03"></div>
+                        </div>
+                        <div class="chart-notes">
+                            <!-- Notes go down here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            <!-- Impressions by device -->
+                        </div>
+                        <div class="chart-stage">
+                            <div id="chart-04"></div>
+                        </div>
+                        <div class="chart-notes">
+                            <!-- Notes go down here -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            <!-- Impressions by country -->
+                        </div>
+                        <div class="chart-stage">
+                            <div id="chart-05"></div>
+                        </div>
+                        <div class="chart-notes">
+                            <!-- Notes go down here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="chart-wrapper">
+                        <!-- <img data-src="holder.js/100%x150/white"> -->
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="chart-wrapper">
+                        <!-- <img data-src="holder.js/100%x150/white"> -->
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="chart-wrapper">
+                        <!-- <img data-src="holder.js/100%x150/white"> -->
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="chart-wrapper">
+                        <!-- <img data-src="holder.js/100%x150/white"> -->
+                    </div>
+                </div>
+            </div>
+            <hr>
         </div>
     </body>
     <!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script> -->
@@ -335,8 +431,8 @@
                 type: Chartist.AutoScaleAxis,
                 onlyInteger: true
             },
-            width: 1200,
-            height: 600
+            // width: 1200,
+            height: 400
         };
 
         // Create a new line chart object where as first parameter we pass in a selector
@@ -346,7 +442,7 @@
     }
 
     function fill_other_tables(know_array) {
-        $('#totalSols').text('We have fetched ' + know_array.length + ' soutions');
+        // $('#totalSols').text('We have fetched ' + know_array.length + ' soutions');
         // console.log(fine_arr);
     }
 
@@ -441,3 +537,4 @@ Code chef user analysis tool
 @author
 Alaf azam khan
  -->
+ <!--  -->
