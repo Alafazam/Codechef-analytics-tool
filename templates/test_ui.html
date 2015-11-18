@@ -425,7 +425,7 @@
         };
         var options = {
             showArea: true,
-            // showLine: false,
+            showLine: false,
             // showPoint: false,
             axisY: {
                 type: Chartist.AutoScaleAxis,
@@ -472,13 +472,8 @@
 
         var nanobar = new Nanobar(options);
 
-        // per_page = 10 < max_page ? 10 : max_page;
-        // per_page = 10
-
-        // max_a = 2
         for (var i = 0; i <= max_a; i++) {
             var per_page = 9;
-            // console.log("sending request from " + (i * 10) + ' to ' + ((i * 10) + per_page));
             $.ajax({
                 url: '/ajax_data/' + username,
                 type: 'GET',
@@ -487,16 +482,13 @@
                     end: (i * 10) + per_page
                 },
                 success: function(data) {
-                    // console.log(data);
                     loader_count++;
                     nanobar.go(~~((loader_count / max_page) * 100));
-                    // ~~(max_page / 10);
                     obj_arr = JSON.parse(data);
                     for (bj in obj_arr.content) {
                         var obj = obj_arr.content[bj];
                         hour_array.push(Number(obj.hours));
                         minute_array.push(Number(obj.minutes));
-                        // console.log(Number(obj.hours)+" : "+Number(obj.minutes));
                         problem_code_array.push(obj.problem_code);
                         qstatus_array.push(obj.qstatus);
                         date_d_array[Number(obj.date_d)]++;
@@ -511,14 +503,10 @@
                             fine_arr[Number(obj.hours)][Number(obj.minutes)]++;
                         };
                     }
-                    // make_charts();
-                    // console.log("loader_count is " + loader_count);
-                    // console.log("max_a is " + max_a);
                     if (loader_count > max_a) {
                         hide_loader();
                         create_charta();
-                        // chart_init(know_array);
-                        fill_other_tables(know_array);
+\                        fill_other_tables(know_array);
 
                     };
                 },
