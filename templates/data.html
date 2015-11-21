@@ -500,7 +500,7 @@
                         problem_code_array.push(obj.problem_code);
                         
                         // qstatus_array.push(obj.qstatus);
-                        if (!qstatus_array[obj.qstatus]) {qstatus_array[obj.qstatus]=1}else{qstatus_array[obj.qstatus]++};
+                        if (!qstatus_array[''+obj.qstatus]) {qstatus_array[obj.qstatus]=1}else{qstatus_array[obj.qstatus]++};
                         date_d_array[Number(obj.date_d)]++;
                         date_m_array.push(Number(obj.date_m));
                         date_y_array.push(Number(obj.date_y));
