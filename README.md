@@ -1,5 +1,5 @@
-# codeChef_tool
-Code chef tool for analyzing profiles 
+# Codechef-analytics-tool
+Unofficial tool for analyzing codechef profiles 
 
 
-It does not work anymore. Codechef changed their api, now we cannot see all solutions of a user.
+Sadly,this does not work anymore. Codechef changed their api, now we cannot see all solutions of a user.
