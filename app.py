@@ -12,9 +12,9 @@ _basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 
-h_ago = re.compile('(\d) (hours) (ago)') 
+h_ago = re.compile('(\d) (hours) (ago)')
 pm = re.compile('(\d\d):(\d\d) (AM|PM) (\d{2})\/(\d{2})\/(\d{2})')
-min_ago = re.compile('(\d\d) (min) (ago)') 
+min_ago = re.compile('(\d\d) (min) (ago)')
 yesterday_wali  = re.compile('(\d\d:\d\d) (PM|AM) (yesterday)')
 username_reg = re.compile('^[a-z]{1}[a-z0-9_]{3,13}$')
 
@@ -72,7 +72,7 @@ def generate__data(username):
 	end_page    = int(request.args.get('end') if request.args.get('end') else 1) 
 
 	# start_page  = 0
-	# end_page    = 10 
+	# end_page    = 10
 
 	if re.match('^[a-z]{1}[a-z0-9_]{3,13}$',username)==None:
 		return json.dumps({'time':None})
@@ -83,10 +83,10 @@ def generate__data(username):
 	def generate():
 		s = requests.Session()
 		# yield "start="+str(datetime.datetime.now())+'\n'
-		yield '{ "content":[ { "hours":null, "mins":null, "date_d":null, "date_m":null, "date_y":null, "problem_code":null, "qstatus":null, "langz":null } '     
+		yield '{ "content":[ { "hours":null, "mins":null, "date_d":null, "date_m":null, "date_y":null, "problem_code":null, "qstatus":null, "langz":null } '
 		for x in range(start_page,end_page+1):
 			time.sleep(0.1)
-			print "sending request for page "+ str(x) 
+			print "sending request for page "+ str(x)
 			url = 'https://www.codechef.com/recent/user?page='+str(x)+'&user_handle='+str(username)
 			try:
 				r = s.get(url).json()
@@ -111,7 +111,7 @@ def generate__data(username):
 						problem_code = str(q.contents[1].a['href']).split('/')[-1]
 						qstatus = str(q.contents[2].span['title']) if q.contents[2].span['title'] else 'None'
 						langz = str(q.contents[3].text)
-						response_string += ', "problem_code":"'+ problem_code + '", "qstatus":"'+ qstatus + '", "langz":"'+ langz+ '" } '	
+						response_string += ', "problem_code":"'+ problem_code + '", "qstatus":"'+ qstatus + '", "langz":"'+ langz+ '" } '
 						yield ''+ response_string
 			except Exception, e:
 				print e
@@ -124,15 +124,15 @@ def generate__data(username):
 @app.route('/test_route', methods=['GET'])
 def test_route():
 	start_page  = 0
-	end_page    = 10 
+	end_page    = 10
 	username = 'alafazam'
 	def generate():
 		s = requests.Session()
 		# yield "start="+str(datetime.datetime.now())+'\n'
-		yield '{ "content":[ { "hours":null, "mins":null, "date_d":null, "date_m":null, "date_y":null, "problem_code":null, "qstatus":null, "langz":null } '     
+		yield '{ "content":[ { "hours":null, "mins":null, "date_d":null, "date_m":null, "date_y":null, "problem_code":null, "qstatus":null, "langz":null } '
 		for x in range(start_page,end_page):
 			# time.sleep(0.1)
-			print "sending request for page "+ str(x) 
+			print "sending request for page "+ str(x)
 			url = 'https://www.codechef.com/recent/user?page='+str(x)+'&user_handle='+str(username)
 			try:
 				r = s.get(url).json()
@@ -150,16 +150,15 @@ def test_route():
 						date_d = search_grp.group(4)
 						date_m = search_grp.group(4)
 						date_y = search_grp.group(4)
-						response_string += ', '    
+						response_string += ', '
 						response_string +=',{ "hours":"' + str(hours+(12*int(am_pm=='PM'))) + '", "minutes":"'+ mins + '", "date_d":"' + date_d+ '", "date_y":"' + date_y+ '", "date_m":"' + date_m + '"' 				
 						problem_code = str(q.contents[1].a['href']).split("/")[-1]
 						qstatus = str(q.contents[2].span["title"]) if q.contents[2].span["title"] else "None"
 						langz = str(q.contents[3].text)
 						response_string += ', "problem_code":"'+ problem_code + '", "qstatus":"'+ qstatus + '", "minutes":"'+ langz+ '" } '	
-						yield ''+ response_string 
+						yield ''+ response_string
 			except Exception, e:
 				print e
-			
 			# yield "   end="+str(datetime.datetime.now())+''
 		yield " ] }"
 		print 'Done'
@@ -172,8 +171,8 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=port,debug=True)
 
 
-#  
-# Code chef user analysis tool 
+#
+# Code chef user analysis tool
 # @author
 # Alaf azam khan
-# 
+#
