@@ -43,7 +43,6 @@ def get_data(username):
 		print 'max_page :'+ str(ef)
 	except Exception, e:
 		ef = 10
-		print e
 	finally:
 		return render_template('data.html',username=username,max_page=int(ef))
 
@@ -69,7 +68,7 @@ def ui_test_data(username):
 def generate__data(username):
 
 	start_page  = int(request.args.get('start') if request.args.get('start') else 0)
-	end_page    = int(request.args.get('end') if request.args.get('end') else 1) 
+	end_page    = int(request.args.get('end') if request.args.get('end') else 1)
 
 	# start_page  = 0
 	# end_page    = 10
@@ -121,44 +120,38 @@ def generate__data(username):
 	return Response(generate())
 
 
-@app.route('/test_route', methods=['GET'])
+# for demo
+demoData = {}
+with open('./downloads/collected data/anudeep obj_data.json') as data_file:
+    demoData = json.load(data_file)["data"]
+
+# print demoData["data"][501]
+
+
+@app.route('/demo_route', methods=['GET'])
 def test_route():
-	start_page  = 0
-	end_page    = 10
-	username = 'alafazam'
+	username = 'anudeep nikunti'
 	def generate():
 		s = requests.Session()
 		# yield "start="+str(datetime.datetime.now())+'\n'
 		yield '{ "content":[ { "hours":null, "mins":null, "date_d":null, "date_m":null, "date_y":null, "problem_code":null, "qstatus":null, "langz":null } '
-		for x in range(start_page,end_page):
-			# time.sleep(0.1)
-			print "sending request for page "+ str(x)
-			url = 'https://www.codechef.com/recent/user?page='+str(x)+'&user_handle='+str(username)
-			try:
-				r = s.get(url).json()
-				e = r["content"]
-				soup = BeautifulSoup(e, 'html.parser')
-				trs = soup.find_all('tr','kol')
-				for q in trs:
-					response_string=""
-					times = str(q.contents[0].text)
-					search_grp = re.search(pm,times)
-					if search_grp:
-						hours  = int(search_grp.group(1))
-						mins   = search_grp.group(2)
-						am_pm  = search_grp.group(3)
-						date_d = search_grp.group(4)
-						date_m = search_grp.group(4)
-						date_y = search_grp.group(4)
-						response_string += ', '
-						response_string +=',{ "hours":"' + str(hours+(12*int(am_pm=='PM'))) + '", "minutes":"'+ mins + '", "date_d":"' + date_d+ '", "date_y":"' + date_y+ '", "date_m":"' + date_m + '"' 				
-						problem_code = str(q.contents[1].a['href']).split("/")[-1]
-						qstatus = str(q.contents[2].span["title"]) if q.contents[2].span["title"] else "None"
-						langz = str(q.contents[3].text)
-						response_string += ', "problem_code":"'+ problem_code + '", "qstatus":"'+ qstatus + '", "minutes":"'+ langz+ '" } '	
-						yield ''+ response_string
-			except Exception, e:
-				print e
+		for q in demoData:
+			response_string = ''
+			search_grp = re.search(pm,q["time"])
+			# print  search_grp
+			if search_grp:
+				hours  = int(search_grp.group(1))
+				mins   = search_grp.group(2)
+				am_pm  = search_grp.group(3)
+				date_d = search_grp.group(4)
+				date_m = search_grp.group(4)
+				date_y = search_grp.group(4)
+				response_string +=',{ "hours":"' + str(hours+(12*int(am_pm=='PM'))) + '", "minutes":"'+ mins + '", "date_d":"' + date_d+ '", "date_y":"' + date_y+ '", "date_m":"' + date_m + '"' 				
+				problem_code = q["problem_code"]
+				qstatus = q["status"]
+				langz = q["lang"]
+				response_string += ', "problem_code":"'+ problem_code + '", "qstatus":"'+ qstatus + '", "minutes":"'+ langz+ '" } '
+				yield ''+ response_string
 			# yield "   end="+str(datetime.datetime.now())+''
 		yield " ] }"
 		print 'Done'

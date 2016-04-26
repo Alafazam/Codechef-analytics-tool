@@ -9,11 +9,11 @@
         font-family: 'humor';
         src: url('/static/Humor-Sans.woff') format('woff'), url('/static/Humor-Sans.ttf') format('truetype');
     }
-    
+
     .loaded {
         visibility: hidden;
     }
-    
+
     html,
     body {
         /*height: 100% !important;*/
@@ -21,7 +21,7 @@
         margin: 0;
         padding: 0;
     }
-    
+
     .loading_overlay {
         /*height: 100%;*/
         /*min-height: 100%;*/
@@ -31,7 +31,7 @@
         background-color: #FFF;
         position: absolute;
     }
-    
+
     #loader_message {
         /*position: absolute;*/
         left: 20%;
@@ -54,7 +54,7 @@
         margin-left: auto;
         margin-right: auto;
     }
-    
+
     .ct-golden-section {
         display: block;
         position: relative;
@@ -462,10 +462,8 @@
         max_page--;
         var options = {
             bg: '#acf',
-
             // leave target blank for global nanobar
             // target: document.getElementById('myDivId'),
-
             // id for new nanobar
             id: 'mynano'
         };
@@ -480,7 +478,7 @@
             var per_page = 9;
             // console.log("sending request from " + (i * 10) + ' to ' + ((i * 10) + per_page));
             $.ajax({
-                url: '/ajax_data/' + username,
+                url: '/demo_route/' + username,
                 type: 'GET',
                 data: {
                     start: i * 10,
@@ -497,7 +495,7 @@
                         hour_array.push(Number(obj.hours));
                         minute_array.push(Number(obj.minutes));
                         // console.log(Number(obj.hours)+" : "+Number(obj.minutes));
-                        problem_code_array.push(obj.problem_code);                        
+                        problem_code_array.push(obj.problem_code);
                         // qstatus_array.push(obj.qstatus);
                         if (!qstatus_array[''+obj.qstatus]) {qstatus_array[obj.qstatus]=1}else{qstatus_array[obj.qstatus]++};
                         date_d_array[Number(obj.date_d)]++;
