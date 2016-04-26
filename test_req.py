@@ -7,7 +7,7 @@ s   = requests.Session()
 
 bogie = ''
 
-for x in range(0, 250):       
+for x in range(0, 250):
 	myurl = 'https://www.codechef.com/recent/user/page='+str(x)+'&user_handle=anudeep2011'
     # myurl = url + str(x)
 	r = s.get(myurl)
