@@ -46,39 +46,23 @@ def get_data(username):
 	finally:
 		return render_template('data.html',username=username,max_page=int(ef))
 
-@app.route('/test/<string:username>', methods=['GET'])
-def ui_test_data(username):
-	if re.match('^[a-z]{1}[a-z0-9_]{3,13}$',username)==None:
-		return render_template('index.html',message="Illegal Username/Input is not alphanumeric")
-	ef = 0
-	url = 'https://www.codechef.com/recent/user?page=0&user_handle='+str(username)
-	try:
-		r = requests.get(url).json()
-		ef = r["max_page"]
-		print 'max_page :'+ str(ef)
-	except Exception, e:
-		ef = 10
-		print e
-	finally:
-		return render_template('test_ui.html',username=username,max_page=int(ef))
+@app.route('/demo', methods=['GET'])
+def demo_():
+	return render_template('demo.html',username="Anudeep",max_page=int(300))
 
 
 
 @app.route('/ajax_data/<string:username>', methods=['GET'])
 def generate__data(username):
-
 	start_page  = int(request.args.get('start') if request.args.get('start') else 0)
 	end_page    = int(request.args.get('end') if request.args.get('end') else 1)
-
 	# start_page  = 0
 	# end_page    = 10
-
 	if re.match('^[a-z]{1}[a-z0-9_]{3,13}$',username)==None:
 		return json.dumps({'time':None})
 
 	if end_page < start_page or end_page < 0 or start_page < 0:
 		return json.dumps({'time':None})
-
 	def generate():
 		s = requests.Session()
 		# yield "start="+str(datetime.datetime.now())+'\n'
@@ -129,12 +113,15 @@ with open('./downloads/collected data/anudeep obj_data.json') as data_file:
 
 
 @app.route('/demo_route', methods=['GET'])
-def test_route():
+def demo_route():
+	start_page  = int(request.args.get('start') if request.args.get('start') else 0)
+	end_page    = int(request.args.get('end') if request.args.get('end') else 1)
 	username = 'anudeep nikunti'
 	def generate():
-		s = requests.Session()
+		# s = requests.Session()
 		# yield "start="+str(datetime.datetime.now())+'\n'
 		yield '{ "content":[ { "hours":null, "mins":null, "date_d":null, "date_m":null, "date_y":null, "problem_code":null, "qstatus":null, "langz":null } '
+		# for x in range(start_page,end_page+1):
 		for q in demoData:
 			response_string = ''
 			search_grp = re.search(pm,q["time"])
@@ -146,7 +133,7 @@ def test_route():
 				date_d = search_grp.group(4)
 				date_m = search_grp.group(4)
 				date_y = search_grp.group(4)
-				response_string +=',{ "hours":"' + str(hours+(12*int(am_pm=='PM'))) + '", "minutes":"'+ mins + '", "date_d":"' + date_d+ '", "date_y":"' + date_y+ '", "date_m":"' + date_m + '"' 				
+				response_string +=',{ "hours":"' + str(hours+(12*int(am_pm=='PM'))) + '", "minutes":"'+ mins + '", "date_d":"' + date_d+ '", "date_y":"' + date_y+ '", "date_m":"' + date_m + '"'
 				problem_code = q["problem_code"]
 				qstatus = q["status"]
 				langz = q["lang"]
@@ -155,7 +142,6 @@ def test_route():
 			# yield "   end="+str(datetime.datetime.now())+''
 		yield " ] }"
 		print 'Done'
-
 	return Response(generate())
 
 
