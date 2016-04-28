@@ -94,7 +94,7 @@ def generate__data(username):
 						problem_code = str(q.contents[1].a['href']).split('/')[-1]
 						qstatus = str(q.contents[2].span['title']) if q.contents[2].span['title'] else 'None'
 						langz = str(q.contents[3].text)
-						response_string += ', "problem_code":"'+ problem_code + '", "qstatus":"'+ qstatus + '", "langz":"'+ langz+ '" } '
+						response_string += ', "problem_code":"'+ problem_code + '", "qstatus":"'+ qstatus + '", "langz":"'+ langz + '" } '
 						yield ''+ response_string
 			except Exception, e:
 				print e
@@ -133,11 +133,11 @@ def demo_route():
 				date_d = search_grp.group(4)
 				date_m = search_grp.group(4)
 				date_y = search_grp.group(4)
-				response_string +=',{ "hours":"' + str(hours+(12*int(am_pm=='PM'))) + '", "minutes":"'+ mins + '", "date_d":"' + date_d+ '", "date_y":"' + date_y+ '", "date_m":"' + date_m + '"'
+				response_string +=',{ "hours":"' + str((hours+(12*int(am_pm=='PM')))%24) + '", "minutes":"'+ mins + '", "date_d":"' + date_d+ '", "date_y":"' + date_y+ '", "date_m":"' + date_m + '"' 			
 				problem_code = q["problem_code"]
 				qstatus = q["status"]
 				langz = q["lang"]
-				response_string += ', "problem_code":"'+ problem_code + '", "qstatus":"'+ qstatus + '", "minutes":"'+ langz+ '" } '
+				response_string += ', "problem_code":"'+ problem_code + '", "qstatus":"'+ qstatus + '", "langz":"'+ langz+ '" } '
 				yield ''+ response_string
 			# yield "   end="+str(datetime.datetime.now())+''
 		yield " ] }"

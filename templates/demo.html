@@ -43,12 +43,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
     <link rel="stylesheet" type="text/css" href="/static/keen-dashboards.css" />
-
     <style>
     .ct-label {
         color: black;
         font-size: 0.95rem;
     }
+
     .center {
         float: none;
         margin-left: auto;
@@ -59,6 +59,10 @@
         display: block;
         position: relative;
         width: 1200px;
+    }
+    .chart-notes span{
+        display:inherit;
+        text-align: center;
     }
     </style>
     <!-- <link rel="stylesheet" href="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.css" /> -->
@@ -279,7 +283,8 @@
                             <!-- <div id="chart-01"></div> -->
                             <div id="chartista" class="center ct-chart hide"></div>
                         </div>
-                        <div class="chart-notes">
+                        <div class="chart-notes center">
+                            Most active days
                             <!-- This is a sample text region to describe this chart. -->
                         </div>
                     </div>
@@ -290,9 +295,9 @@
                             <!-- Hourly Activity -->
                         </div>
                         <div class="chart-stage">
-                            <div id="chart-02"></div>
+                            <div id="chart-02" class='center ct-chart2 hide'></div>
                         </div>
-                        <div class="chart-notes">
+                        <div  id="chart-02-notes" class="chart-notes">
                             <!-- Notes go down here -->
                         </div>
                     </div>
@@ -370,6 +375,37 @@
     <!-- // <script type="text/javascript" src="//cdn.jsdelivr.net/cal-heatmap/3.3.10/cal-heatmap.min.js"></script> -->
     <!-- // <script src="https://cdn.zingchart.com/zingchart.min.js"></script> -->
     <script>
+    // https://gist.github.com/ralphcrisostomo/3141412
+    function compressArray(original) {
+        var compressed = [];
+        // make a copy of the input array
+        var copy = original.slice(0);
+        // first loop goes over every element
+        for (var i = 0; i < original.length; i++) {
+            var myCount = 0;
+            // loop over every element in the copy and see if it's the same
+            for (var w = 0; w < copy.length; w++) {
+                if (original[i] == copy[w]) {
+                    // increase amount of times duplicate is found
+                    myCount++;
+                    // sets item to undefined
+                    delete copy[w];
+                }
+            }
+            if (myCount > 0 && original[i]) {
+                var a = new Object();
+                a.value = myCount;
+                a.name = original[i];
+                a.meta = original[i];
+                compressed.push(a);
+            }
+        }
+        return compressed;
+    };
+</script>
+
+
+<script>
     username = '{{username}}'
     max_page = Number('{{max_page}}')
     apllicable_texts = [
@@ -405,6 +441,7 @@
         $('#loading_overlay').addClass('fade');
         $('#loading_overlay').addClass('hide');
         $('#chartista').removeClass('hide');
+        $('#chart-02').removeClass('hide');
         $('#mynano').addClass('hide');
 
     }
@@ -445,6 +482,14 @@
         console.log(qstatus_array);
         // $('#totalSols').text('We have fetched ' + know_array.length + ' soutions');
         // console.log(fine_arr);
+        // console.log();
+        langs_used = compressArray(lang_array)
+        new Chartist.Pie('.ct-chart2', {
+            series: langs_used
+        });
+        for (var i = 0; i < langs_used.length; i++) {
+            $('#chart-02-notes').append( $('<span>').text(langs_used[i].name + " : " + langs_used[i].value));
+        };
     }
 
 
@@ -455,7 +500,7 @@
         for (var i = 1; i < 32; i++) {
             date_d_array[i] = 0;
         };
-        t = setInterval(changeText, 5000);
+        t = setInterval(changeText, 2000);
 
         console.log("max paages are:" + max_page);
 
@@ -470,13 +515,6 @@
 
         var nanobar = new Nanobar(options);
 
-        // per_page = 10 < max_page ? 10 : max_page;
-        // per_page = 10
-
-        // max_a = 2
-        // for (var i = 0; i <= max_a; i++) {
-        //     var per_page = 9;
-            // console.log("sending request from " + (i * 10) + ' to ' + ((i * 10) + per_page));
         $.ajax({
             url: '/demo_route',
             type: 'GET',
@@ -488,12 +526,17 @@
                 obj_arr = JSON.parse(data);
                 for (bj in obj_arr.content) {
                     var obj = obj_arr.content[bj];
+                    // console.log(obj);
                     hour_array.push(Number(obj.hours));
                     minute_array.push(Number(obj.minutes));
                     // console.log(Number(obj.hours)+" : "+Number(obj.minutes));
                     problem_code_array.push(obj.problem_code);
                     // qstatus_array.push(obj.qstatus);
-                    if (!qstatus_array[''+obj.qstatus]) {qstatus_array[obj.qstatus]=1}else{qstatus_array[obj.qstatus]++};
+                    if (!qstatus_array['' + obj.qstatus]) {
+                        qstatus_array[obj.qstatus] = 1
+                    } else {
+                        qstatus_array[obj.qstatus]++
+                    };
                     date_d_array[Number(obj.date_d)]++;
                     date_m_array.push(Number(obj.date_m));
                     date_y_array.push(Number(obj.date_y));
@@ -506,12 +549,14 @@
                         fine_arr[Number(obj.hours)][Number(obj.minutes)]++;
                     };
                 }
-                // if (~~((loader_count / max_page) == 100) {
+                // setTimeout(function() {
                     hide_loader();
                     create_charta();
                     // chart_init(know_array);
                     fill_other_tables(know_array);
-                // };
+                // }, 7000);
+                    console.log(obj_arr.content[100]);
+                    // console.log(lang_array);
             },
             error: function(e) {
                 //called when there is an error
@@ -529,4 +574,4 @@ Code chef user analysis tool
 @author
 Alaf azam khan
  -->
- <!--  -->
+<!--  -->
