@@ -16,24 +16,24 @@
 
     html,
     body {
-        /*height: 100% !important;*/
-        /*min-height: 100%;*/
         margin: 0;
         padding: 0;
     }
 
     .loading_overlay {
-        /*height: 100%;*/
-        /*min-height: 100%;*/
         width: 100%;
         min-width: 100%;
         z-index: 1000;
         background-color: #FFF;
         position: absolute;
     }
-
+    .second{
+        margin-top: 40px;
+    }
+    h1 {
+    margin-bottom: 10px;
+    }
     #loader_message {
-        /*position: absolute;*/
         left: 20%;
         right: 20%;
     }
@@ -50,6 +50,7 @@
     }
 
     .center {
+        text-align: center;
         float: none;
         margin-left: auto;
         margin-right: auto;
@@ -268,7 +269,7 @@
         </div>
         <div>
             <!-- <div id="cal-heatmap"></div> -->
-            <!-- <h1>Lets see which days you are most active.</h1> -->
+            <h1 class="center">Stats from your Codechef profile.</h1>
             <!-- <div id='chartDiv'></div> -->
             <!-- <div id="totalSols"></div> -->
         </div>
@@ -284,7 +285,7 @@
                             <div id="chartista" class="center ct-chart hide"></div>
                         </div>
                         <div class="chart-notes center">
-                            Most active days
+                            <span>Most active days</span>
                             <!-- This is a sample text region to describe this chart. -->
                         </div>
                     </div>
@@ -292,7 +293,7 @@
                 <div class="col-sm-4">
                     <div class="chart-wrapper">
                         <div class="chart-title">
-                            <!-- Hourly Activity -->
+                            Languages Used
                         </div>
                         <div class="chart-stage">
                             <div id="chart-02" class='center ct-chart2 hide'></div>
@@ -303,7 +304,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="second row">
                 <div class="col-sm-4">
                     <div class="chart-wrapper">
                         <div class="chart-title">
@@ -344,29 +345,6 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-3">
-                    <div class="chart-wrapper">
-                        <!-- <img data-src="holder.js/100%x150/white"> -->
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="chart-wrapper">
-                        <!-- <img data-src="holder.js/100%x150/white"> -->
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="chart-wrapper">
-                        <!-- <img data-src="holder.js/100%x150/white"> -->
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <div class="chart-wrapper">
-                        <!-- <img data-src="holder.js/100%x150/white"> -->
-                    </div>
-                </div>
-            </div>
-            <hr>
         </div>
     </body>
     <!-- // <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script> -->
@@ -484,6 +462,10 @@
         // console.log(fine_arr);
         // console.log();
         langs_used = compressArray(lang_array)
+
+
+        langs_used[0].value = 50;
+        langs_used[1].value = 20;
         new Chartist.Pie('.ct-chart2', {
             series: langs_used
         });
