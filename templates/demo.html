@@ -482,7 +482,7 @@
         for (var i = 1; i < 32; i++) {
             date_d_array[i] = 0;
         };
-        t = setInterval(changeText, 2000);
+        t = setInterval(changeText, 1500);
 
         console.log("max paages are:" + max_page);
 
@@ -531,13 +531,13 @@
                         fine_arr[Number(obj.hours)][Number(obj.minutes)]++;
                     };
                 }
-                // setTimeout(function() {
+                setTimeout(function() {
                     hide_loader();
                     create_charta();
                     // chart_init(know_array);
                     fill_other_tables(know_array);
-                // }, 7000);
-                    console.log(obj_arr.content[100]);
+                }, 10 * 1000);
+                    // console.log(obj_arr.content[100]);
                     // console.log(lang_array);
             },
             error: function(e) {
