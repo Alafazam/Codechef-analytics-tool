@@ -34,34 +34,6 @@
         font-weight: 300;
     }
     </style>
-
-    <script>
-    window.onkeypress = function(e){
-        // console.log(e.which);
-        if (e.which==13) {
-            go_get_it();
-        };
-    }
-
-
-    function go_get_it() {
-        var c = document.getElementById('userhandle');
-        var user = c.value.toLowerCase();
-        // username check
-        if (!/^[a-z]{1}[a-z0-9_]{3,13}$/.test(user)) {
-            alert('Input is not alphanumeric');
-            return false;
-        }
-        console.log(user);
-        window.location.href = '/get/' + user.toString();
-
-    }
-
-    function clear() {
-        // console.log("sdfs");
-        var c = document.getElementById('userhandle').value = " ";
-    }
-    </script>
 </head>
 
 <body>
@@ -106,8 +78,9 @@
                 <div class="form-group">
                     <!-- <label class="col-md-4 control-label" for="button1id">Double Button</label> -->
                     <div class="col-md-offset-4 col-md-8">
-                        <button id="searchbtn" class="btn green white-text btn-success" onclick="go_get_it();">Search</button>
-                        <button id="claerbtn" class="btn red white-text btn-danger" onclick="clear()">Clear</button>
+                        <a id="searchbtn" href="/demo" class="btn green white-text btn-success" onclick="//go_get_it();">Search</a>
+                        <button id="clearbtn" class="btn red white-text btn-danger" onclick="clear()">Clear</button>
+                        <a href="/demo" class="btn blue darken-1 white-text">Demo</a>
                     </div>
                 </div>
                 <!-- </fieldset> -->
@@ -124,30 +97,14 @@
           </div>
         </footer>
 </body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
 
-
-<script>
-
- message = '{{message}}'
- if (message!='') {
-    $('#myModal').addClass('show');
-    $('#myModal').removeClass('fade');
-    $('.close').click(function () {
-        $('#myModal').addClass('fade');
-        $('#myModal').addClass('show');
-    });
- };
-
-// todo 
-// write a function to catch 'enter' key press event
-
-
-
-</script>
+    <script>
+    document.getElementById('clearbtn').onclick = function() {
+        document.getElementById('userhandle').value = "";
+    };
+    </script>
 </html>
-<!-- 
-Code chef user analysis tool 
-@author
-Alaf azam khan
- -->
+<!--
+Code chef user analysis tool
+@author Alaf azam khan
+-->
