@@ -106,7 +106,7 @@ def generate__data(username):
 
 # for demo
 demoData = {}
-with open('./downloads/collected data/anudeep obj_data.json') as data_file:
+with open('./anudeep obj_data.json') as data_file:
     demoData = json.load(data_file)["data"]
 
 # print demoData["data"][501]
